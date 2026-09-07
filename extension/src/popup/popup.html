@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ZeroFeed Extension</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <div class="popup-container">
+    <div class="header">
+      <div class="logo">ZF</div>
+      <div class="title-area">
+        <h3>ZeroFeed Guard</h3>
+        <span class="badge" id="policyBadge">POLICY ACTIVE</span>
+      </div>
+    </div>
+
+    <div class="status-box">
+      <p class="label">Enforced Rule:</p>
+      <p class="value">YouTube & Social Feeds Blocked</p>
+    </div>
+
+    <form id="emergencyForm" class="unlock-form">
+      <label for="reason">Temporary Override Request</label>
+      <input type="text" id="reason" placeholder="Reason for partner approval..." required />
+      <button type="submit" class="btn-unlock">Request 15m Partner OTP</button>
+    </form>
+
+    <div id="statusMessage" class="status-msg hidden"></div>
+
+    <div class="footer">
+      <span>ZeroFeed Multi-Client • Connected to Backend :4000</span>
+    </div>
+  </div>
+
+  <script type="module" src="./popup.js"></script>
+</body>
+</html>

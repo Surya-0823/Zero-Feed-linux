@@ -1,0 +1,48 @@
+{
+  "name": "zerofeed-monorepo",
+  "version": "1.0.0",
+  "description": "ZeroFeed Multi-Client Monorepo: Web, Desktop, Extension, and Backend",
+  "private": true,
+  "workspaces": [
+    "backend",
+    "desktop",
+    "web",
+    "extension"
+  ],
+  "scripts": {
+    "dev": "concurrently -n \"API,WEB,DESKTOP\" -c \"blue,cyan,magenta\" \"npm --prefix backend run dev\" \"npm --prefix web run dev\" \"npm --prefix desktop start\"",
+    "dev:backend": "npm --prefix backend run dev",
+    "dev:web": "npm --prefix web run dev",
+    "dev:desktop": "npm --prefix desktop start",
+    "dev:extension": "npm --prefix extension run dev",
+    "build:extension": "npm --prefix extension run build",
+    "release:extension": "npm --prefix extension run release",
+    "start": "npm run dev",
+    "start:desktop": "npm --prefix desktop start",
+    "start:web": "npm --prefix web run dev",
+    "test:desktop": "npm --prefix desktop test",
+    "test:backend": "npm --prefix backend test",
+    "test": "npm --prefix desktop test && npm --prefix backend test"
+  },
+  "devDependencies": {
+    "@electron-forge/cli": "7.11.2",
+    "@electron-forge/maker-deb": "7.11.2",
+    "@electron-forge/maker-rpm": "7.11.2",
+    "@electron-forge/maker-squirrel": "7.11.2",
+    "@electron-forge/maker-zip": "7.11.2",
+    "@electron-forge/plugin-auto-unpack-natives": "7.11.2",
+    "@electron-forge/plugin-fuses": "7.11.2",
+    "@electron-forge/plugin-webpack": "7.11.2",
+    "@electron/fuses": "1.8.0",
+    "@vercel/webpack-asset-relocator-loader": "1.7.3",
+    "concurrently": "10.0.5",
+    "css-loader": "6.11.0",
+    "electron": "44.2.0",
+    "node-loader": "2.1.0",
+    "style-loader": "3.3.4"
+  },
+  "dependencies": {
+    "@electron-internal/extract-zip": "1.0.5",
+    "electron-squirrel-startup": "1.0.1"
+  }
+}

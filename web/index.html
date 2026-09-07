@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ZeroFeed Web - Setup & Policy Portal</title>
+  <link rel="stylesheet" href="./src/style.css" />
+</head>
+<body>
+  <div class="app-container">
+    <header class="app-header">
+      <div class="brand">
+        <span class="logo-badge">ZF</span>
+        <h1>ZeroFeed Web Portal</h1>
+      </div>
+      <div class="status-indicator">
+        <span class="status-dot" id="backendDot"></span>
+        <span id="backendStatus">Checking backend...</span>
+      </div>
+    </header>
+
+    <main class="main-content">
+      <div class="card">
+        <div class="card-header">
+          <h2>Tenant & Accountability Setup</h2>
+          <p class="subtitle">Configure your feed-blocking policy and accountability partner.</p>
+        </div>
+
+        <form id="setupForm" class="setup-form">
+          <div class="form-group">
+            <label for="tenantEmail">User / Tenant Email</label>
+            <input type="email" id="tenantEmail" name="tenantEmail" placeholder="user@example.com" required value="dev-mock-user@example.com" />
+          </div>
+
+          <div class="form-group">
+            <label for="partnerEmail">Accountability Partner Email</label>
+            <input type="email" id="partnerEmail" name="partnerEmail" placeholder="partner@example.com" required value="partner@example.com" />
+            <small>This person receives OTPs required to disable feed restrictions.</small>
+          </div>
+
+          <div class="form-group">
+            <label for="partnerName">Partner Name</label>
+            <input type="text" id="partnerName" name="partnerName" placeholder="Alex Smith" required value="Alex Smith" />
+          </div>
+
+          <div class="form-group">
+            <label>Blocked Feeds</label>
+            <div class="checkbox-group">
+              <label class="checkbox-label">
+                <input type="checkbox" name="feeds" value="youtube" checked />
+                <span>YouTube Home & Shorts</span>
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" name="feeds" value="twitter" checked />
+                <span>X / Twitter Timelines</span>
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" name="feeds" value="linkedin" checked />
+                <span>LinkedIn Feeds</span>
+              </label>
+            </div>
+          </div>
+
+          <button type="submit" id="submitBtn" class="btn-primary">Save Policy Configuration</button>
+        </form>
+
+        <div id="formResult" class="form-result hidden"></div>
+      </div>
+    </main>
+
+    <footer class="app-footer">
+      <p>ZeroFeed Multi-Client Monorepo • Web (:3000) • Backend (:4000) • Desktop • Extension</p>
+    </footer>
+  </div>
+
+  <script type="module" src="./src/main.js"></script>
+</body>
+</html>

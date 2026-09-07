@@ -1,0 +1,43 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: zerofeed-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: zerofeed
+      POSTGRES_USER: zerofeed
+      POSTGRES_PASSWORD: zerofeed_secret
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U zerofeed -d zerofeed"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  api:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: zerofeed-api
+    restart: unless-stopped
+    ports:
+      - "4000:4000"
+    environment:
+      NODE_ENV: development
+      PORT: 4000
+      DATABASE_URL: postgresql://zerofeed:zerofeed_secret@postgres:5432/zerofeed?schema=public
+      JWT_ACCESS_SECRET: dev_jwt_access_secret_key_change_in_production_123
+      JWT_REFRESH_SECRET: dev_jwt_refresh_secret_key_change_in_production_456
+      GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID:-}
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+volumes:
+  postgres_data:

@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ZeroFeed · Neo-Brutalist Focus Enforcer</title>
+    <!-- Google Fonts: Chewy, Plus Jakarta Sans, Space Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Chewy&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="app">
+      <!-- Top Navigation Bar (Neo-Brutalist Sticky Pill) -->
+      <header class="header-outer">
+        <nav class="top-nav" aria-label="Main Navigation">
+          <div class="brand">
+            <div class="logo-badge">⚡</div>
+            <div class="brand-text">
+              <h1>
+                <span class="highlight-wrap">
+                  <span class="highlight-text">ZeroFeed</span>
+                  <span class="highlight-marker marker-pink shape-1"></span>
+                </span>
+              </h1>
+              <span class="subtext">Desktop Focus Enforcer</span>
+            </div>
+          </div>
+
+          <div class="nav-center-badge">
+            <span class="sticker-badge yellow">🎓 TAMPER-PROOF STUDY</span>
+          </div>
+
+          <div id="user-pill" class="user-pill hidden">
+            <div class="pulse-dot"></div>
+            <span id="user-email">user@example.com</span>
+            <button id="btn-logout" class="btn-sm btn-logout">Sign Out</button>
+          </div>
+        </nav>
+      </header>
+
+      <main class="main-container">
+        <!-- Notification Alert Banner -->
+        <div id="alert-banner" class="alert-banner hidden"></div>
+
+        <!-- VIEW 1: AUTHENTICATION SCREEN -->
+        <section id="auth-screen" class="view-section">
+          <div class="auth-card card brutal-card">
+            <div class="badge-tag-wrap">
+              <span class="sticker-badge purple">🔒 WILLPOWER ELIMINATOR</span>
+            </div>
+
+            <h2>
+              Welcome to
+              <span class="highlight-wrap">
+                <span class="highlight-text">ZeroFeed</span>
+                <span class="highlight-marker marker-yellow shape-2"></span>
+              </span>
+            </h2>
+            <p class="card-desc">
+              A physical commitment device. Sign in with Google to enforce your Linux Chrome Enterprise Policy and lock your accountability partner.
+            </p>
+
+            <div class="auth-actions">
+              <button id="btn-dev-login" class="btn btn-primary btn-full">
+                <span class="btn-icon">⚡</span> Quick Sign-In with Google (Dev Mock)
+              </button>
+
+              <div class="divider"><span>OR WITH GOOGLE TOKEN</span></div>
+
+              <div class="form-group">
+                <label for="google-id-token">GOOGLE ID TOKEN (JWT)</label>
+                <input
+                  type="text"
+                  id="google-id-token"
+                  placeholder="Paste Google ID Token..."
+                  autocomplete="off"
+                />
+              </div>
+              <button id="btn-token-login" class="btn btn-secondary btn-full">
+                Verify Google ID Token →
+              </button>
+            </div>
+
+            <div class="auth-trust-note">
+              <span>🛡️ 100% Google Authentication · No Password Stored</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- VIEW 2: MAIN DASHBOARD -->
+        <section id="dashboard-screen" class="view-section hidden">
+          <div class="dashboard-grid">
+            
+            <!-- Left Column: Status & Accountability Partner -->
+            <div class="column">
+              <!-- Account & Subscription Card -->
+              <div class="card brutal-card">
+                <div class="card-corner-tag">★ STATUS</div>
+                <h3>Subscription Status</h3>
+                <div class="status-row">
+                  <span class="status-label">Account Plan:</span>
+                  <span id="sub-plan-badge" class="badge badge-neutral">FREE</span>
+                </div>
+                <div class="status-row">
+                  <span class="status-label">Policy Access:</span>
+                  <span id="sub-access-badge" class="badge badge-warning">INACTIVE</span>
+                </div>
+                <p class="hint-text">
+                  Subscription state is authoritatively controlled by the PostgreSQL backend.
+                </p>
+              </div>
+
+              <!-- Accountability Partner Card -->
+              <div class="card brutal-card">
+                <div class="card-corner-tag coral">🔐 PARTNER LOCK</div>
+                <h3>Accountability Partner</h3>
+                <p class="card-desc">
+                  To disable or modify the extension policy, a 6-digit code will be emailed to your partner. No self-unlocking.
+                </p>
+
+                <div id="partner-view-box">
+                  <div class="form-group">
+                    <label for="input-partner-email">PARTNER'S EMAIL ADDRESS</label>
+                    <input
+                      type="email"
+                      id="input-partner-email"
+                      placeholder="e.g. partner@example.com"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="input-partner-name">PARTNER'S NAME (OPTIONAL)</label>
+                    <input
+                      type="text"
+                      id="input-partner-name"
+                      placeholder="e.g. Alex"
+                    />
+                  </div>
+                  <button id="btn-save-partner" class="btn btn-secondary btn-full">
+                    Register & Lock Partner
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right Column: Chrome Policy Enforcement -->
+            <div class="column">
+              <div class="card brutal-card policy-card">
+                <div class="card-header-row">
+                  <h3>
+                    <span class="highlight-wrap">
+                      <span class="highlight-text">Chrome Enterprise Policy</span>
+                      <span class="highlight-marker marker-green shape-3"></span>
+                    </span>
+                  </h3>
+                  <span id="policy-status-pill" class="badge badge-neutral">UNKNOWN</span>
+                </div>
+
+                <p class="card-desc">
+                  Enforces <code>installation_mode: force_installed</code> on Linux so the Chrome extension cannot be uninstalled or disabled in <code>chrome://extensions</code>.
+                </p>
+
+                <!-- Extension ID Configuration -->
+                <div class="extension-id-box">
+                  <label for="input-extension-id">TARGET CHROME EXTENSION ID</label>
+                  <div class="input-with-action">
+                    <input
+                      type="text"
+                      id="input-extension-id"
+                      value="febihikohgfdplbpppapfgkfnpibelhk"
+                      placeholder="32-character Chrome extension ID"
+                    />
+                    <button id="btn-update-ext-id" class="btn btn-sm btn-secondary">
+                      Change ID
+                    </button>
+                  </div>
+                  <span class="hint-text">Matches <code>chrome://policy</code> ExtensionSettings entry.</span>
+                </div>
+
+                <!-- Linux Policy Path -->
+                <div class="policy-path-box">
+                  <span class="path-label">MANAGED POLICY FILE (LINUX):</span>
+                  <code id="policy-file-path">/etc/opt/chrome/policies/managed/zerofeed.json</code>
+                </div>
+
+                <!-- Policy Actions -->
+                <div class="action-buttons-row">
+                  <button id="btn-apply-policy" class="btn btn-success">
+                    🔒 Lock & Force Install
+                  </button>
+                  <button id="btn-disable-policy" class="btn btn-danger">
+                    🔓 Request Partner Unlock
+                  </button>
+                </div>
+              </div>
+
+              <!-- Chrome Policy Preview -->
+              <div class="card brutal-card code-card">
+                <div class="card-header-row">
+                  <h4>Generated Policy JSON (Linux)</h4>
+                  <button id="btn-refresh-status" class="btn-sm btn-secondary">↻ Check Disk</button>
+                </div>
+                <pre><code id="policy-json-preview">Loading policy...</code></pre>
+              </div>
+            </div>
+
+          </div>
+        </section>
+      </main>
+
+      <!-- OTP VERIFICATION MODAL -->
+      <div id="otp-modal" class="modal-overlay hidden">
+        <div class="modal-card brutal-card">
+          <div class="modal-header">
+            <h3>
+              🔐 Partner Verification Code
+            </h3>
+            <button id="btn-close-modal" class="btn-icon-close" aria-label="Close modal">&times;</button>
+          </div>
+          <div class="modal-body">
+            <p id="otp-modal-desc">
+              A 6-digit verification code has been dispatched to your accountability partner.
+            </p>
+
+            <div class="otp-input-wrap">
+              <input
+                type="text"
+                id="otp-code-input"
+                maxlength="6"
+                placeholder="123456"
+                autocomplete="one-time-code"
+              />
+            </div>
+
+            <div class="otp-actions">
+              <button id="btn-submit-otp" class="btn btn-primary btn-full">
+                Verify Code & Apply Change →
+              </button>
+              <div class="modal-footer-row">
+                <button id="btn-resend-otp" class="btn-link">Resend Code</button>
+                <span id="resend-timer" class="timer-text"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </body>
+</html>

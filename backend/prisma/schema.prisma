@@ -1,0 +1,196 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum SubscriptionStatus {
+  ACTIVE
+  INACTIVE
+  TRIAL
+  CANCELLED
+  PAST_DUE
+}
+
+enum PlanTier {
+  FREE
+  PRO
+  ENTERPRISE
+}
+
+enum PaymentStatus {
+  PENDING
+  COMPLETED
+  FAILED
+  REFUNDED
+}
+
+enum PaymentProvider {
+  STRIPE
+  RAZORPAY
+}
+
+enum PartnerStatus {
+  ACTIVE
+  PENDING_REPLACEMENT
+  REVOKED
+}
+
+enum PolicyAction {
+  DISABLE_POLICY
+  ENABLE_POLICY
+  UPDATE_RULES
+  UPDATE_EXTENSION_ID
+  CHANGE_PARTNER
+}
+
+enum OtpStatus {
+  PENDING
+  VERIFIED
+  EXPIRED
+  FAILED
+}
+
+model User {
+  id                   String                      @id @default(uuid())
+  email                String                      @unique
+  googleId             String                      @unique
+  name                 String?
+  avatarUrl            String?
+  createdAt            DateTime                    @default(now())
+  updatedAt            DateTime                    @updatedAt
+
+  subscription         Subscription?
+  partner              Partner?
+  policy               ExtensionPolicy?
+  payments             Payment[]
+  refreshTokens        RefreshToken[]
+  verificationRequests PolicyVerificationRequest[]
+  auditLogs            AuditLog[]
+
+  @@map("users")
+}
+
+model RefreshToken {
+  id        String   @id @default(uuid())
+  token     String   @unique
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+
+  @@index([userId, expiresAt])
+  @@map("refresh_tokens")
+}
+
+model Subscription {
+  id                     String             @id @default(uuid())
+  userId                 String             @unique
+  user                   User               @relation(fields: [userId], references: [id], onDelete: Cascade)
+  status                 SubscriptionStatus @default(INACTIVE)
+  plan                   PlanTier           @default(FREE)
+  provider               PaymentProvider?
+  providerCustomerId     String?
+  providerSubscriptionId String?
+  currentPeriodStart     DateTime?
+  currentPeriodEnd       DateTime?
+  cancelAtPeriodEnd      Boolean            @default(false)
+  createdAt              DateTime           @default(now())
+  updatedAt              DateTime           @updatedAt
+
+  @@index([userId, status])
+  @@map("subscriptions")
+}
+
+model Payment {
+  id                String          @id @default(uuid())
+  userId            String
+  user              User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  amount            Int             // In lowest denomination (e.g. cents/paise)
+  currency          String          @default("USD")
+  status            PaymentStatus   @default(PENDING)
+  provider          PaymentProvider
+  providerOrderId   String?
+  providerPaymentId String?
+  createdAt         DateTime        @default(now())
+  updatedAt         DateTime        @updatedAt
+
+  @@index([userId, status])
+  @@index([providerOrderId])
+  @@map("payments")
+}
+
+model Partner {
+  id                   String                      @id @default(uuid())
+  userId               String                      @unique
+  user                 User                        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  email                String
+  name                 String?
+  status               PartnerStatus               @default(ACTIVE)
+  createdAt            DateTime                    @default(now())
+  updatedAt            DateTime                    @updatedAt
+
+  verificationRequests PolicyVerificationRequest[]
+
+  @@index([status])
+  @@map("partners")
+}
+
+model ExtensionPolicy {
+  id               String   @id @default(uuid())
+  userId           String   @unique
+  user             User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  extensionId      String   @default("febihikohgfdplbpppapfgkfnpibelhk")
+  isEnabled        Boolean  @default(true)
+  blockedFeeds     String[] @default(["YOUTUBE_HOMEPAGE", "YOUTUBE_SHORTS", "TWITTER_FEED", "INSTAGRAM_EXPLORE", "LINKEDIN_FEED"])
+  blockedDomains   String[] @default([])
+  allowlistDomains String[] @default([])
+  strictMode       Boolean  @default(true) // Requires partner verification OTP to disable or modify
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  @@map("extension_policies")
+}
+
+model PolicyVerificationRequest {
+  id          String        @id @default(uuid())
+  userId      String
+  user        User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  partnerId   String
+  partner     Partner       @relation(fields: [partnerId], references: [id], onDelete: Cascade)
+  action      PolicyAction
+  otpCode     String
+  status      OtpStatus     @default(PENDING)
+  targetState Json?
+  attempts    Int           @default(0)
+  expiresAt   DateTime
+  verifiedAt  DateTime?
+  createdAt   DateTime      @default(now())
+
+  @@index([userId, status])
+  @@index([partnerId, status])
+  @@index([expiresAt])
+  @@map("policy_verification_requests")
+}
+
+model AuditLog {
+  id          String   @id @default(uuid())
+  userId      String?
+  user        User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+  eventType   String
+  action      String
+  payloadHash String   // SHA-256 hash of event payload
+  prevHash    String?  // Tamper-evident blockchain-style hash chain
+  signature   String?  // HMAC signature
+  ipHash      String?
+  userAgent   String?
+  createdAt   DateTime @default(now())
+
+  @@index([userId])
+  @@index([eventType])
+  @@index([createdAt])
+  @@map("audit_logs")
+}

@@ -1,0 +1,11 @@
+{
+  "name": "@zerofeed/web",
+  "version": "1.0.0",
+  "description": "ZeroFeed Web Application Portal",
+  "main": "server.js",
+  "private": true,
+  "scripts": {
+    "dev": "node server.js",
+    "start": "node server.js"
+  }
+}

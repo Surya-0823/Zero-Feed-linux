@@ -1,0 +1,17 @@
+{
+  "name": "@zerofeed/extension",
+  "version": "1.0.0",
+  "description": "ZeroFeed Chrome Extension Manifest V3",
+  "private": true,
+  "scripts": {
+    "dev": "vite build --watch",
+    "dev:extension": "vite build --watch",
+    "build": "vite build",
+    "build:extension": "vite build",
+    "package:zip": "mkdir -p ../release && cd dist && zip -r ../../release/zerofeed-extension.zip .",
+    "release": "npm run build && npm run package:zip"
+  },
+  "devDependencies": {
+    "vite": "8.2.2"
+  }
+}
