@@ -10,7 +10,7 @@ export class AuthController {
   }
 
   async googleAuth(req: Request, res: Response): Promise<void> {
-    const { idToken } = req.body;
+    const { idToken, generateDesktopCode, state } = req.body;
 
     if (!idToken || typeof idToken !== 'string') {
       res.status(400).json({
@@ -21,13 +21,41 @@ export class AuthController {
     }
 
     try {
-      const result = await this.authService.authenticateWithGoogle(idToken.trim());
+      const result = await this.authService.authenticateWithGoogle(idToken.trim(), {
+        generateDesktopCode: Boolean(generateDesktopCode),
+        state: typeof state === 'string' ? state.trim() : undefined,
+      });
       const statusCode = result.isNewUser ? 201 : 200;
       res.status(statusCode).json(result);
     } catch (error: any) {
       res.status(401).json({
         error: 'AuthenticationFailed',
         message: error.message || 'Failed to authenticate with Google.',
+      });
+    }
+  }
+
+  async exchangeCode(req: Request, res: Response): Promise<void> {
+    const { code, state } = req.body;
+
+    if (!code || typeof code !== 'string') {
+      res.status(400).json({
+        error: 'BadRequest',
+        message: 'code is required and must be a valid string.',
+      });
+      return;
+    }
+
+    try {
+      const result = await this.authService.exchangeDesktopAuthCode(
+        code.trim(),
+        typeof state === 'string' ? state.trim() : undefined
+      );
+      res.status(200).json(result);
+    } catch (error: any) {
+      res.status(401).json({
+        error: 'InvalidOrExpiredCode',
+        message: error.message || 'Failed to exchange authorization code.',
       });
     }
   }

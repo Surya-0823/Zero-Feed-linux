@@ -1,0 +1,131 @@
+        <!-- ============================================================ -->
+        <!-- THE GRAVEYARD & GUILD LEADERBOARD SHOWPIECE                  -->
+        <!-- ============================================================ -->
+        <section class="graveyard-section-wrap" id="graveyard">
+
+            <div class="graveyard-header">
+                <div>
+                    <span class="sticker-badge dark">⚰️ THE GRAVEYARD PROTOCOL</span>
+                    <h2 class="graveyard-title">
+                        Where <span class="highlight-wrap"><span class="highlight-text">Broken Commitments</span><span class="highlight-marker marker-pink shape-1"></span></span> Are Recorded
+                    </h2>
+                </div>
+                <div class="status-pill" style="background: #374151; color: #F87171; border-color: #F87171;">
+                    <span style="color: #EF4444;">●</span>
+                    <span>TAMPER SURVEILLANCE ACTIVE</span>
+                </div>
+            </div>
+
+            <p class="graveyard-desc">
+                Every serious focus system needs real financial and psychological stakes. If you try to <strong>disable the extension, turn off feed blocking, or delete the app</strong> during your study period, you face the <span class="highlight-wrap"><span class="highlight-text" style="color:#FFF;">Triple Penalty Protocol.</span><span class="highlight-marker marker-pink shape-2"></span></span>
+            </p>
+
+            <!-- The Triple Penalty Warning Grid -->
+            <div class="triple-penalty-grid">
+                <div class="penalty-step-card">
+                    <div class="penalty-step-num">PENALTY 01</div>
+                    <div class="penalty-step-title">🚨 Instant Account Ejection</div>
+                    <div class="penalty-step-desc">
+                        Attempt to disable or delete the extension? You are immediately kicked out of your ZeroFeed account and removed from the active guild.
+                    </div>
+                </div>
+                <div class="penalty-step-card">
+                    <div class="penalty-step-num">PENALTY 02</div>
+                    <div class="penalty-step-title">🔥 Streak Annihilated to 0</div>
+                    <div class="penalty-step-desc">
+                        Your verified study streak drops to 0 days immediately and your failure is recorded on The Graveyard Wall.
+                    </div>
+                </div>
+                <div class="penalty-step-card">
+                    <div class="penalty-step-num">PENALTY 03</div>
+                    <div class="penalty-step-title">💳 Must Re-Purchase Pass</div>
+                    <div class="penalty-step-desc">
+                        Your active pass is forfeited. If you want to return and regain access, you must pay again to re-enter.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dual Showcase: Active Leaders vs Ejected Graveyard Wall -->
+            <div class="graveyard-duel-grid">
+                <!-- Guild Leaderboard (Active Focus Streaks) -->
+                <div class="guild-leaderboard-box">
+                    <div class="duel-header">
+                        <span style="color: #34D399;">🏆 ACTIVE GUILD LEADERS</span>
+                        <span style="color: #6EE7B7; font-size: 0.7rem;" id="leader-subhead">LIVE SUPABASE SYNC</span>
+                    </div>
+                    <ul class="leader-list" id="guild-leader-list">
+                        <li class="leader-item">
+                            <span class="leader-name">🥇 Alex M. · Calculus III</span>
+                            <span class="leader-streak">🔥 48 Days <small style="opacity:0.7;">(Lvl 5)</small></span>
+                        </li>
+                        <li class="leader-item">
+                            <span class="leader-name">🥈 Priya N. · Med Board Prep</span>
+                            <span class="leader-streak">🔥 41 Days <small style="opacity:0.7;">(Lvl 4)</small></span>
+                        </li>
+                        <li class="leader-item">
+                            <span class="leader-name">🥉 Marcus T. · Computer Science</span>
+                            <span class="leader-streak">🔥 36 Days <small style="opacity:0.7;">(Lvl 4)</small></span>
+                        </li>
+                        <li class="leader-item">
+                            <span class="leader-name">⭐ Sarah K. · Law Bar Exam</span>
+                            <span class="leader-streak">🔥 29 Days <small style="opacity:0.7;">(Lvl 3)</small></span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Graveyard Ejected Ledger -->
+                <div class="graveyard-ejected-box">
+                    <div class="duel-header">
+                        <span style="color: #F87171;">⚰️ THE GRAVEYARD WALL</span>
+                        <span style="color: #FCA5A5; font-size: 0.7rem;" id="graveyard-subhead">STREAKS RESET TO 0</span>
+                    </div>
+                    <ul class="ejected-list" id="graveyard-ejected-list">
+                        <li class="ejected-item">
+                            <span class="ejected-name">⚰️ Member #8491</span>
+                            <span class="ejected-tag">RESET TO 0 · Tried to Delete Ext.</span>
+                        </li>
+                        <li class="ejected-item">
+                            <span class="ejected-name">⚰️ Member #3012</span>
+                            <span class="ejected-tag">RESET TO 0 · Missed Daily Block</span>
+                        </li>
+                        <li class="ejected-item">
+                            <span class="ejected-name">⚰️ Member #9104</span>
+                            <span class="ejected-tag">RESET TO 0 · Feed Tamper Attempt</span>
+                        </li>
+                        <li class="ejected-item">
+                            <span class="ejected-name">⚰️ Member #1422</span>
+                            <span class="ejected-tag">RESET TO 0 · Extension Removed</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Live Telemetry Simulator -->
+            <div class="graveyard-telemetry-grid">
+                <div class="telemetry-card">
+                    <div class="telemetry-label">🛡️ Active Session Lock</div>
+                    <div class="telemetry-value" id="telemetry-lock-uptime">99.4% Uptime</div>
+                </div>
+                <div class="telemetry-card">
+                    <div class="telemetry-label">⚡ Global Focus Streaks</div>
+                    <div class="telemetry-value" id="telemetry-focus-days">14,820 Days</div>
+                </div>
+                <div class="telemetry-card">
+                    <div class="telemetry-label">⚰️ Tamper Violations Detected</div>
+                    <div class="telemetry-value warn" id="telemetry-violations-count">0 Recorded</div>
+                </div>
+            </div>
+
+            <div class="graveyard-rules-box">
+                <span style="font-size: 1.8rem;">⚡</span>
+                <div>
+                    <strong style="font-family: var(--font-mono); color: var(--color-yellow); display: block; margin-bottom: 2px;">
+                        <span class="highlight-wrap"><span class="highlight-text" style="color:var(--color-yellow);">THE UNBREAKABLE COMMITMENT CODE</span><span class="highlight-marker marker-yellow shape-2" style="background-color: rgba(253, 224, 71, 0.25);"></span></span>
+                    </strong>
+                    <span style="font-size: 0.82rem; color: #D4D4D8;">
+                        When disabling the extension means losing your account, wiping your streak to 0, and having to pay again to re-enter — your dopamine impulses lose. You study.
+                    </span>
+                </div>
+            </div>
+
+        </section>

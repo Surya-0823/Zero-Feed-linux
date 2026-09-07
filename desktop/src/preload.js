@@ -4,6 +4,8 @@ contextBridge.exposeInMainWorld('zeroFeedAPI', {
   // Authentication
   auth: {
     loginWithGoogle: (idToken) => ipcRenderer.invoke('auth:google', idToken),
+    startBrowserLogin: () => ipcRenderer.invoke('auth:startBrowserLogin'),
+    openWebPortal: (path) => ipcRenderer.invoke('auth:openWebPortal', path),
     getMe: () => ipcRenderer.invoke('auth:me'),
     logout: () => ipcRenderer.invoke('auth:logout'),
     getSession: () => ipcRenderer.invoke('auth:getSession'),

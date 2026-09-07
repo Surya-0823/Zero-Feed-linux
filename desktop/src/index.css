@@ -910,3 +910,105 @@ code {
 .hidden {
   display: none !important;
 }
+
+/* ==========================================================================
+   DARK-THEMED LIFETIME FOUNDER BANNER
+   ========================================================================== */
+.lifetime-banner {
+  background: #121316; /* Deep obsidian background */
+  color: #FFFFFF;
+  border: 3px solid #000000;
+  box-shadow: 5px 5px 0px #000000;
+  border-radius: 12px;
+  padding: 16px 22px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  transition: transform 0.15s ease;
+}
+
+.lifetime-banner:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 6px 6px 0px #000000;
+}
+
+.lifetime-banner-content {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.lifetime-icon-wrap {
+  width: 46px;
+  height: 46px;
+  background: #23252E;
+  border: 2px solid #FDE047; /* Gold accent */
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.lifetime-title-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.lifetime-title-row h4 {
+  font-family: var(--font-mono, monospace);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #FDE047; /* Yellow/Gold brand color */
+  letter-spacing: 0.5px;
+  margin: 0;
+}
+
+.lifetime-pill {
+  background: #23252E;
+  color: #A1A1AA;
+  border: 1px solid #3F3F46;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.68rem;
+  padding: 2px 8px;
+  border-radius: 999px;
+  text-transform: uppercase;
+}
+
+.lifetime-subtext {
+  font-family: var(--font-main, sans-serif);
+  font-size: 0.85rem;
+  color: #D4D4D8;
+  margin: 4px 0 0 0;
+}
+
+.lifetime-email {
+  color: #FFFFFF;
+  font-weight: 700;
+}
+
+.lifetime-status-pill {
+  background: #10B981; /* Emerald Green */
+  color: #000000;
+  border: 2px solid #000000;
+  box-shadow: 2px 2px 0px #000000;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 6px;
+  white-space: nowrap;
+}
+
+.badge-dark-lifetime {
+  background: #121316;
+  color: #FDE047;
+  border: 1.5px solid #FDE047;
+  font-family: var(--font-mono, monospace);
+  font-weight: 700;
+}
+

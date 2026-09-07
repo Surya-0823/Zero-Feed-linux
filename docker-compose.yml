@@ -31,7 +31,7 @@ services:
       DATABASE_URL: postgresql://zerofeed:zerofeed_secret@postgres:5432/zerofeed?schema=public
       JWT_ACCESS_SECRET: dev_jwt_access_secret_key_change_in_production_123
       JWT_REFRESH_SECRET: dev_jwt_refresh_secret_key_change_in_production_456
-      GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID:-}
+      GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID:-109814022869-6bvlc37qt7g1vrfek19uui96ljunb5ug.apps.googleusercontent.com}
     volumes:
       - ./backend:/app
       - /app/node_modules

@@ -4,7 +4,7 @@
   "description": "Centralized backend API service for ZeroFeed",
   "main": "dist/server.js",
   "scripts": {
-    "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
+    "dev": "ts-node-dev --poll --respawn --transpile-only src/server.ts",
     "build": "tsc",
     "test": "tsc && node --test dist/**/*.test.js",
     "start": "node dist/server.js",

@@ -1,4 +1,6 @@
-const { app, BrowserWindow, ipcMain } = require('electron');
+const { app, BrowserWindow, ipcMain, shell } = require('electron');
+const http = require('http');
+const crypto = require('crypto');
 const path = require('path');
 const policyEnforcer = require('./services/policy-enforcer');
 
@@ -8,6 +10,7 @@ if (require('electron-squirrel-startup')) {
 }
 
 const BACKEND_URL = process.env.BACKEND_URL || 'http://localhost:4000';
+const WEB_PORTAL_URL = process.env.WEB_PORTAL_URL || 'http://localhost:3001';
 
 let sessionData = {
   accessToken: null,
@@ -71,6 +74,84 @@ async function apiRequest(endpoint, method = 'GET', body = null, retry = true) {
 
 function setupIpcHandlers() {
   // Auth Handlers
+  ipcMain.handle('auth:startBrowserLogin', async () => {
+    return new Promise((resolve) => {
+      const state = crypto.randomBytes(16).toString('hex');
+      let isResolved = false;
+
+      const server = http.createServer(async (req, res) => {
+        try {
+          const reqUrl = new URL(req.url, 'http://127.0.0.1');
+          if (reqUrl.pathname === '/callback') {
+            const code = reqUrl.searchParams.get('code');
+            const incomingState = reqUrl.searchParams.get('state');
+
+            if (!code || incomingState !== state) {
+              res.writeHead(400, { 'Content-Type': 'text/html; charset=utf-8' });
+              res.end('<h1>Authentication Failed</h1><p>Invalid or expired state parameter.</p>');
+              return;
+            }
+
+            res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
+            res.end(`<!DOCTYPE html><html><body style="font-family:sans-serif;text-align:center;padding:50px;background:#FAFAFA;">
+              <h1 style="color:#10B981;">⚡ ZeroFeed Desktop Authenticated</h1>
+              <p>You can close this tab and return to the ZeroFeed desktop application.</p>
+              <script>setTimeout(() => window.close(), 2500);</script>
+            </body></html>`);
+
+            try {
+              server.close();
+            } catch (_) {}
+
+            if (!isResolved) {
+              isResolved = true;
+              try {
+                const exchangeResult = await apiRequest('/api/v1/auth/exchange', 'POST', { code, state });
+                sessionData.accessToken = exchangeResult.tokens.accessToken;
+                sessionData.refreshToken = exchangeResult.tokens.refreshToken;
+                sessionData.user = exchangeResult.user;
+                sessionData.subscription = exchangeResult.subscription;
+                resolve({ success: true, data: exchangeResult });
+              } catch (exchangeErr) {
+                resolve({ success: false, error: exchangeErr.message });
+              }
+            }
+          } else {
+            res.writeHead(404);
+            res.end();
+          }
+        } catch (err) {
+          res.writeHead(500);
+          res.end();
+        }
+      });
+
+      // Bind on dynamic port 0 (standard RFC 8252 loopback)
+      server.listen(0, '127.0.0.1', () => {
+        const port = server.address().port;
+        const targetUrl = `${WEB_PORTAL_URL}/?source=desktop&port=${port}&state=${state}`;
+        shell.openExternal(targetUrl);
+      });
+
+      // Ephemeral listener safety: generous 5-minute timeout for 2FA & browser handshakes
+      setTimeout(() => {
+        if (!isResolved) {
+          isResolved = true;
+          try {
+            server.close();
+          } catch (_) {}
+          resolve({ success: false, error: 'Sign in timed out (5 minutes). Please try again.' });
+        }
+      }, 300000);
+    });
+  });
+
+  ipcMain.handle('auth:openWebPortal', (_, targetPath = '') => {
+    const url = targetPath ? `${WEB_PORTAL_URL}${targetPath}` : WEB_PORTAL_URL;
+    shell.openExternal(url);
+    return { success: true };
+  });
+
   ipcMain.handle('auth:google', async (_, idToken) => {
     try {
       const result = await apiRequest('/api/v1/auth/google', 'POST', { idToken });

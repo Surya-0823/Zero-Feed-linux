@@ -1,78 +1,1314 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ZeroFeed Web - Setup & Policy Portal</title>
-  <link rel="stylesheet" href="./src/style.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ZeroFeed · Stop Scrolling. Start Studying. | YouTube Feed Blocker</title>
+    <meta name="description" content="ZeroFeed is the tamper-proof YouTube feed blocker and student focus app that removes YouTube Shorts, recommendations, and dopamine traps so you can study consistently." />
+
+    <!-- Google Search Console Verification -->
+    <meta name="google-site-verification" content="google37202b10624c1dc3" />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://zerofeed.app/" />
+
+    <!-- Open Graph / Facebook Meta Tags -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://zerofeed.app/" />
+    <meta property="og:site_name" content="ZeroFeed" />
+    <meta property="og:title" content="ZeroFeed · Stop Scrolling. Start Studying." />
+    <meta property="og:description" content="The tamper-proof student focus extension & YouTube feed blocker that removes Shorts, algorithmic feeds, and dopamine traps for deep study." />
+    <meta property="og:image" content="https://zerofeed.app/src/assets/clean_feed_preview.png" />
+    <meta property="og:image:width" content="1280" />
+    <meta property="og:image:height" content="800" />
+    <meta property="og:image:alt" content="ZeroFeed clean YouTube interface with feeds and recommendations removed" />
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://zerofeed.app/" />
+    <meta name="twitter:title" content="ZeroFeed · Stop Scrolling. Start Studying." />
+    <meta name="twitter:description" content="The tamper-proof student focus extension & YouTube feed blocker that removes Shorts, algorithmic feeds, and dopamine traps for deep study." />
+    <meta name="twitter:image" content="https://zerofeed.app/src/assets/clean_feed_preview.png" />
+    <meta name="twitter:image:alt" content="ZeroFeed clean YouTube interface with feeds and recommendations removed" />
+
+    <!-- Schema.org JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "SoftwareApplication",
+          "@id": "https://zerofeed.app/#software",
+          "name": "ZeroFeed",
+          "url": "https://zerofeed.app/",
+          "applicationCategory": "ProductivityApplication",
+          "operatingSystem": "Chrome, Firefox, macOS, Windows, Linux",
+          "description": "ZeroFeed is a tamper-proof distraction control system and YouTube feed blocker designed to help students study without algorithmic feeds, Shorts, or recommendation traps.",
+          "offers": [
+            {
+              "@type": "Offer",
+              "name": "Student Pro Annual",
+              "price": "24.00",
+              "priceCurrency": "USD",
+              "priceValidUntil": "2027-12-31",
+              "availability": "https://schema.org/InStock",
+              "url": "https://zerofeed.app/#pricing",
+              "description": "Full algorithmic feed neutralization across YouTube, Instagram, X/Twitter, Reddit, and LinkedIn with tamper-proof deep study protocol."
+            },
+            {
+              "@type": "Offer",
+              "name": "Lifetime Founding Pass",
+              "price": "39.00",
+              "priceCurrency": "USD",
+              "priceValidUntil": "2027-12-31",
+              "availability": "https://schema.org/InStock",
+              "url": "https://zerofeed.app/#pricing",
+              "description": "Lifetime access to ZeroFeed for the first 100 students with all future platform and AI updates included."
+            }
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://zerofeed.app/#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Why should I pay for ZeroFeed when Unhook is free?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Because you can turn Unhook off in 3 seconds the moment study gets hard or your willpower fades. If you had the superhuman discipline not to disable a free blocker at 10 PM, you wouldn't need a blocker in the first place. ZeroFeed removes your weak moments from the equation: it cannot be disabled, turned off, or uninstalled on a whim."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What prevents me from just deleting or uninstalling ZeroFeed?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "ZeroFeed uses enterprise-grade browser policy management and partner-linked verification. Once your commitment starts, the extension is locked into Chrome. You cannot right-click and remove it, nor toggle it off. If you have a legitimate emergency, your designated accountability partner must approve your early unlock."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How does the 31-day Monthly Account validity and renewal work?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "A Monthly Account is active for exactly 31 days from the moment of activation. Once the account reaches 31 days, it automatically transitions to an expired state and displays a renewal message directly in your browser, allowing you to renew your pass with 1 click to maintain your uninterrupted focus streak."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How does the 1-Year Locked Account and Warning Email policy work?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yearly accounts remain strictly locked for the full 1-year period (365 days) to enforce unshakeable academic commitment. Users are not permitted to use or tamper with a locked yearly account during the lock duration. If an attempt is made to use a locked yearly account, our security system immediately dispatches a warning email and permanently removes the user from the account, forfeiting the pass."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What exact 21 elements does ZeroFeed remove from YouTube?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "ZeroFeed surgically hides 21 distraction vectors: Home Feed, Video Sidebar, Recommended Videos, Live Chat, Playlists recommendations, Fundraisers, End Screen Feeds, End Screen Cards, Shorts, Comments, Mixes, Merch/Offers, Video Info clutter, Top Header, Notifications, Inappropriate Search Results, Explore/Trending, More from YouTube, Subscriptions feed, Autoplay loops, and Annotations. Your search bar and full-length lecture player remain 100% functional."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Which browsers are supported and how does login work?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "You create one single account and log in with Google. ZeroFeed works seamlessly across Google Chrome (and all Chromium browsers like Brave, Edge, Arc) as well as Mozilla Firefox with real-time cloud streak synchronization."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Can I still watch educational courses and university lectures?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes, 100%! You can search for specific topics, watch full courses, pause, rewind, adjust playback speed, and view video playlists. What disappears is the homepage feed, sidebar recommendations, comment rabbit holes, and infinite shorts carousels."
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+
+    <!-- Favicon & Icons -->
+    <link rel="icon" type="image/svg+xml" href="src/assets/icon.svg" />
+    <link rel="apple-touch-icon" href="src/assets/icon.png" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Chewy&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+
+    <!-- API Base & Supabase Config -->
+    <meta name="api-base" content="/api" />
+    <meta name="supabase-url" content="https://pcfrsbziqlohvjumydwj.supabase.co" />
+    <meta name="supabase-anon-key" content="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBjZnJzYnppcWxvaHZqdW15ZHdqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODgxMTM0MTQsImV4cCI6MjEwMzY4OTQxNH0.t4qArNTaYNvV1drUYeydJSBRsH1-ZlT0n1yP0FNSMSk" />
+
+    <!-- Supabase JS Client (Deferred) -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+
+    <!-- Razorpay Checkout SDK (Deferred) -->
+    <script src="https://checkout.razorpay.com/v1/checkout.js" defer></script>
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="src/css/styles.css" />
 </head>
+
 <body>
-  <div class="app-container">
-    <header class="app-header">
-      <div class="brand">
-        <span class="logo-badge">ZF</span>
-        <h1>ZeroFeed Web Portal</h1>
-      </div>
-      <div class="status-indicator">
-        <span class="status-dot" id="backendDot"></span>
-        <span id="backendStatus">Checking backend...</span>
-      </div>
-    </header>
+    <!-- ==========================================================================
+         TOP NAVIGATION BAR WITH BRAND LOGO & SHIELD
+         ========================================================================== -->
+    <div class="header-outer">
+        <header class="site-header">
+            <nav class="nav-inner" aria-label="Main Navigation">
+                <!-- Brand Link with Mascot Logo -->
+                <a href="#hero" class="brand-link" id="brand-logo-btn">
+                    <img src="src/assets/icon.svg" alt="ZeroFeed Logo" class="brand-logo-img" width="38" height="38" />
+                    <span>ZEROFEED</span>
+                    <span class="nav-beta-tag">beta</span>
+                </a>
 
-    <main class="main-content">
-      <div class="card">
-        <div class="card-header">
-          <h2>Tenant & Accountability Setup</h2>
-          <p class="subtitle">Configure your feed-blocking policy and accountability partner.</p>
+                <!-- Navigation Links -->
+                <ul class="nav-links">
+                    <li><a href="#problem">The Problem</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#graveyard">Graveyard</a></li>
+                    <li><a href="#protocol">Protocol</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="#battle">Comparison</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                </ul>
+
+                <!-- Actions -->
+                <div class="nav-actions">
+                    <div id="user-auth-panel" class="nav-auth-panel">
+                        <button type="button" class="btn-google-nav" id="google-signin-btn">
+                            <svg class="google-icon-svg" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true">
+                                <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                                <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                                <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+                                <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+                            </svg>
+                            <span>Sign in with Google</span>
+                        </button>
+                    </div>
+                    <a href="#pricing" class="btn-primary nav-btn" id="nav-cta-btn">
+                        GET ZEROFEED
+                    </a>
+                </div>
+            </nav>
+        </header>
+    </div>
+
+    <!-- ==========================================================================
+         COMPACT CORNER PRODUCT HUNT LAUNCH COUNTDOWN PILL
+         ========================================================================== -->
+    <a href="#pricing" class="ph-corner-pill" id="ph-corner-pill" title="ZeroFeed Product Hunt Chrome Extension Launch in 30 Days · Click to Reserve Spot">
+        <div class="ph-pill-icon-wrap">
+            <span class="ph-pill-rocket">🚀</span>
+            <span class="ph-live-dot"></span>
         </div>
+        <div class="ph-pill-content">
+            <span class="ph-pill-title">PH LAUNCH IN</span>
+            <span class="ph-pill-timer" id="corner-countdown-text">30d : 14h : 21m : 45s</span>
+        </div>
+        <span class="ph-pill-cta">VIP PASS →</span>
+    </a>
 
-        <form id="setupForm" class="setup-form">
-          <div class="form-group">
-            <label for="tenantEmail">User / Tenant Email</label>
-            <input type="email" id="tenantEmail" name="tenantEmail" placeholder="user@example.com" required value="dev-mock-user@example.com" />
-          </div>
+<main>
+        <!-- ============================================================ -->
+        <!-- HERO SECTION                                                 -->
+        <!-- ============================================================ -->
+        <section class="hero" id="hero">
 
-          <div class="form-group">
-            <label for="partnerEmail">Accountability Partner Email</label>
-            <input type="email" id="partnerEmail" name="partnerEmail" placeholder="partner@example.com" required value="partner@example.com" />
-            <small>This person receives OTPs required to disable feed restrictions.</small>
-          </div>
-
-          <div class="form-group">
-            <label for="partnerName">Partner Name</label>
-            <input type="text" id="partnerName" name="partnerName" placeholder="Alex Smith" required value="Alex Smith" />
-          </div>
-
-          <div class="form-group">
-            <label>Blocked Feeds</label>
-            <div class="checkbox-group">
-              <label class="checkbox-label">
-                <input type="checkbox" name="feeds" value="youtube" checked />
-                <span>YouTube Home & Shorts</span>
-              </label>
-              <label class="checkbox-label">
-                <input type="checkbox" name="feeds" value="twitter" checked />
-                <span>X / Twitter Timelines</span>
-              </label>
-              <label class="checkbox-label">
-                <input type="checkbox" name="feeds" value="linkedin" checked />
-                <span>LinkedIn Feeds</span>
-              </label>
+            <!-- Mascot Logo Showcase -->
+            <div class="hero-logo-frame">
+                <div class="hero-mascot-card">
+                    <img src="src/assets/icon.svg" alt="ZeroFeed Mascot Doodle" class="hero-mascot-img" width="82" height="82" />
+                </div>
+                <span class="hero-mascot-tag">⚡ ZERO DISTRACTIONS</span>
             </div>
-          </div>
 
-          <button type="submit" id="submitBtn" class="btn-primary">Save Policy Configuration</button>
-        </form>
+            <div class="hero-badge-container">
+                <span class="sticker-badge yellow">🎓 THE ULTIMATE STUDY COMPANION</span>
+                <span class="sticker-badge green">🔒 TAMPER-PROOF FOCUS</span>
+            </div>
 
-        <div id="formResult" class="form-result hidden"></div>
-      </div>
-    </main>
+            <!-- Main Heading with Hand-Drawn Decorative Highlight -->
+            <h1 class="hero-title">
+                Stop Scrolling.<br />
+                <span class="highlight-wrap">
+                    <span class="highlight-text">Start Studying.</span>
+                    <span class="highlight-marker marker-pink shape-1"></span>
+                </span>
+            </h1>
 
-    <footer class="app-footer">
-      <p>ZeroFeed Multi-Client Monorepo • Web (:3000) • Backend (:4000) • Desktop • Extension</p>
-    </footer>
-  </div>
+            <!-- Subtitle -->
+            <p class="hero-description">
+                The tamper-proof YouTube feed blocker and student focus app that blocks YouTube Shorts, strips algorithmic feeds, and removes dopamine traps so you can finish your study sessions <span class="highlight-wrap"><span class="highlight-text">in weeks,</span><span class="highlight-marker marker-yellow shape-2"></span></span> not months.
+            </p>
 
-  <script type="module" src="./src/main.js"></script>
+            <!-- Feature Pills -->
+            <div class="hero-features">
+                <div class="feature-pill orange">
+                    <span>📺</span>
+                    <span>YouTube without the rabbit hole</span>
+                </div>
+                <div class="feature-pill green">
+                    <span>📱</span>
+                    <span>Social media without endless scrolling</span>
+                </div>
+                <div class="feature-pill yellow">
+                    <span>⚡</span>
+                    <span>Deep study sessions without interruptions</span>
+                </div>
+            </div>
+
+            <!-- Volunteer Demand Gate Counter -->
+            <div class="volunteer-counter-wrapper" id="volunteer-counter-wrapper">
+                <div class="volunteer-counter-pill" id="volunteer-counter">
+                    <span class="volunteer-pulse-indicator"></span>
+                    <span class="volunteer-count-text"><strong id="signup-count">0</strong> / 10 Volunteers to build ZeroFeed</span>
+                </div>
+                <div class="build-gate-banner" id="build-gate-banner" style="display: none;">
+                    🚀 <strong>Goal Unlocked!</strong> Over 10 founders have joined — ZeroFeed is officially in development!
+                </div>
+            </div>
+
+            <!-- CTA Group -->
+            <div class="hero-cta-group">
+                <a href="#pricing" class="btn-primary" id="hero-main-cta">
+                    ⚡ START YOUR FOCUS SESSION →
+                </a>
+                <div class="hero-guarantee">
+                    <span>🛡️ $24/year (Just $2/mo) · One plan. All your devices.</span>
+                </div>
+            </div>
+
+            <!-- HONEST EARLY ACCESS TRUST BADGE (Verifiable & Transparent) -->
+            <div class="social-proof-wrapper">
+                <div class="avatar-group">
+                    <div class="avatar-item" title="Student Founder">👨‍🎓</div>
+                    <div class="avatar-item" title="Student Beta">👩‍💻</div>
+                    <div class="avatar-item" title="Student Beta">⚡</div>
+                </div>
+                <div class="social-proof-content">
+                    <div class="stars-rating">
+                        <span style="color: var(--color-primary); font-weight: 800;">⚡ BUILT BY A STUDENT, FOR STUDENTS</span>
+                    </div>
+                    <p class="social-proof-quote">
+                        ZeroFeed is in private early access. <strong>Join the first 100 students</strong> taking back their focus.
+                    </p>
+                </div>
+            </div>
+
+            <!-- HIGH-IMPACT HERO PRODUCT SHOWCASE & SIMULATOR -->
+            <div class="focus-simulator-wrapper" id="simulator">
+                <!-- Browser Chrome Header -->
+                <div class="sim-header">
+                    <div class="sim-window-dots">
+                        <span class="dot-red"></span>
+                        <span class="dot-yellow"></span>
+                        <span class="dot-green"></span>
+                    </div>
+                    <div class="sim-url-bar">
+                        <span id="sim-url-icon">🔒</span>
+                        <span>youtube.com</span>
+                        <span class="sim-url-tag" id="sim-url-badge">FEED STRIPPED BY ZEROFEED ⚡</span>
+                    </div>
+                    <div class="sim-controls">
+                        <button class="sim-toggle-btn" id="btn-toggle-doom">Doomscroll Mode</button>
+                        <button class="sim-toggle-btn active" id="btn-toggle-zero">ZeroFeed Mode</button>
+                    </div>
+                </div>
+
+                <!-- Showcase Frame Container -->
+                <div class="sim-showcase-container" id="sim-showcase-view">
+                    <!-- Clean ZeroFeed State (Default) -->
+                    <div class="sim-preview-image-wrap" id="sim-clean-view">
+                        <img src="src/assets/clean_feed_preview.png" alt="ZeroFeed clean YouTube interface with feeds and Shorts removed" class="sim-preview-img" width="1280" height="800" loading="eager" />
+                        
+                        <!-- Floating Interactive Feature Callouts -->
+                        <div class="sim-callout callout-search">
+                            <span class="callout-icon">🔍</span>
+                            <div>
+                                <strong>Search &amp; Tutorials Active</strong>
+                                <span>Find any lecture or educational material</span>
+                            </div>
+                        </div>
+
+                        <div class="sim-callout callout-feed">
+                            <span class="callout-icon">🛡️</span>
+                            <div>
+                                <strong>Algorithmic Feed Neutralized</strong>
+                                <span>Zero autoplay loops &amp; recommendation traps</span>
+                            </div>
+                        </div>
+
+                        <div class="sim-callout callout-sidebar">
+                            <span class="callout-icon">📚</span>
+                            <div>
+                                <strong>Study Library Intact</strong>
+                                <span>Playlists, watch later &amp; history preserved</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Doomscroll State (with Real Algorithmic Feed Screenshot) -->
+                    <div class="sim-preview-image-wrap" id="sim-doom-view" style="display: none;">
+                        <img src="src/assets/doomscroll_preview.png" alt="Distracting default YouTube feed with Shorts carousels and recommendations" class="sim-preview-img" width="1024" height="581" loading="lazy" />
+                        
+                        <!-- Floating Warning Callouts -->
+                        <div class="sim-callout callout-doom-shorts">
+                            <span class="callout-icon">📱</span>
+                            <div>
+                                <strong style="color: #DC2626;">Infinite Shorts Carousel</strong>
+                                <span>Engineered dopamine spiral · 45+ mins lost</span>
+                            </div>
+                        </div>
+
+                        <div class="sim-callout callout-doom-clickbait">
+                            <span class="callout-icon">👀</span>
+                            <div>
+                                <strong style="color: #DC2626;">Recommendation Rabbit Hole</strong>
+                                <span>Trillion-dollar algorithms fighting for attention</span>
+                            </div>
+                        </div>
+
+                        <div class="sim-callout callout-doom-ads">
+                            <span class="callout-icon">📢</span>
+                            <div>
+                                <strong style="color: #DC2626;">Targeted Sponsored Traps</strong>
+                                <span>Disrupts focus before your lecture starts</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Showcase Bottom Telemetry Bar -->
+                <div class="sim-footer-metrics">
+                    <div class="sim-metric-item">
+                        <span class="metric-num" id="metric-traps-num">0%</span>
+                        <span class="metric-label" id="metric-traps-label">Feed Traps</span>
+                    </div>
+                    <div class="sim-metric-item">
+                        <span class="metric-num" id="metric-access-num">100%</span>
+                        <span class="metric-label">Lecture Access</span>
+                    </div>
+                    <div class="sim-metric-item">
+                        <span class="metric-num" id="metric-focus-num">+2.5 HRS</span>
+                        <span class="metric-label" id="metric-focus-label">Daily Focus Reclaimed</span>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <hr class="section-divider" />
+
+        <!-- ============================================================ -->
+        <!-- PROBLEM SECTION                                              -->
+        <!-- ============================================================ -->
+        <section class="section" id="problem">
+
+            <div class="section-header">
+                <span class="sticker-badge yellow">THE REAL PROBLEM</span>
+                <h2 class="section-title">
+                    You don't have a motivation problem.<br />
+                    <span class="highlight-wrap">
+                        <span class="highlight-text">You have a willpower trap.</span>
+                        <span class="highlight-marker marker-yellow shape-2"></span>
+                    </span>
+                </h2>
+                <p class="section-desc">
+                    Trillion-dollar algorithms are designed to exploit human fatigue. You open YouTube for one lecture, get stuck on a difficult problem, feel mental friction, and tell yourself: <em>"Just one 5-minute break."</em> That one click triggers a <span class="highlight-wrap"><span class="highlight-text">4 to 6 hour Shorts binge.</span><span class="highlight-marker marker-orange shape-4"></span></span>
+                </p>
+            </div>
+
+            <div class="problem-grid">
+                <!-- Highlight Box: The Relapse Loop -->
+                <div class="brutal-card stat-banner-box">
+                    <div>
+                        <span class="sticker-badge dark">THE RELAPSE LOOP</span>
+                        <div class="stat-number">
+                            <span class="highlight-wrap">
+                                <span class="highlight-text">4-6 HRS</span>
+                                <span class="highlight-marker marker-pink shape-3"></span>
+                            </span>
+                        </div>
+                        <h3 style="font-family: var(--font-mono); font-size: 1.05rem; margin-bottom: 8px;">Burned in a single night after disabling "free" blockers</h3>
+                        <p style="font-size: 0.88rem; color: var(--color-text-muted);">
+                            Free extensions like Unhook give you full permission to turn the feeds back on when your discipline dips. ZeroFeed eliminates the exit door completely.
+                        </p>
+                    </div>
+                    <div style="margin-top: 16px;">
+                        <span class="sticker-badge green" style="font-size: 0.72rem;">✓ ZERO WILLPOWER NEEDED</span>
+                    </div>
+                </div>
+
+                <!-- Founder Story Box -->
+                <div class="brutal-card" style="padding: var(--space-5); background: white; display: flex; flex-direction: column; justify-content: center; border-left: 5px solid var(--color-primary);">
+                    <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+                        <span style="font-size: 1.2rem;">💬</span>
+                        <span class="sticker-badge yellow" style="font-size: 0.7rem;">FOUNDER'S CONFESSION</span>
+                    </div>
+                    <h3 style="font-family: var(--font-display); font-size: 1.25rem; margin-bottom: 8px; color: var(--color-text);">"I Got Sick of Lying to Myself with Unhook"</h3>
+                    <p style="font-size: 0.86rem; line-height: 1.6; color: var(--color-text-muted); margin-bottom: 12px;">
+                        <em>"Every semester I installed Unhook. But whenever study got tough at 9 PM, my willpower crumbled. I clicked 'Disable', opened Shorts, and lost 5 hours. Free blockers give a tired student the keys to their own prison. I built ZeroFeed so I <span class="highlight-wrap"><span class="highlight-text">could never sabotage myself</span><span class="highlight-marker marker-green shape-1"></span></span> again."</em>
+                    </p>
+                    <a href="#pricing" class="btn-secondary" style="align-self: flex-start; font-size: 0.82rem; padding: 6px 14px;">
+                        Lock In Your Commitment →
+                    </a>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- THE GRAVEYARD & GUILD LEADERBOARD SHOWPIECE                  -->
+        <!-- ============================================================ -->
+        <section class="graveyard-section-wrap" id="graveyard">
+
+            <div class="graveyard-header">
+                <div>
+                    <span class="sticker-badge dark">⚰️ THE GRAVEYARD PROTOCOL</span>
+                    <h2 class="graveyard-title">
+                        Where <span class="highlight-wrap"><span class="highlight-text">Broken Commitments</span><span class="highlight-marker marker-pink shape-1"></span></span> Are Recorded
+                    </h2>
+                </div>
+                <div class="status-pill" style="background: #374151; color: #F87171; border-color: #F87171;">
+                    <span style="color: #EF4444;">●</span>
+                    <span>TAMPER SURVEILLANCE ACTIVE</span>
+                </div>
+            </div>
+
+            <p class="graveyard-desc">
+                Every serious focus system needs real financial and psychological stakes. If you try to <strong>disable the extension, turn off feed blocking, or delete the app</strong> during your study period, you face the <span class="highlight-wrap"><span class="highlight-text" style="color:#FFF;">Triple Penalty Protocol.</span><span class="highlight-marker marker-pink shape-2"></span></span>
+            </p>
+
+            <!-- The Triple Penalty Warning Grid -->
+            <div class="triple-penalty-grid">
+                <div class="penalty-step-card">
+                    <div class="penalty-step-num">PENALTY 01</div>
+                    <div class="penalty-step-title">🚨 Instant Account Ejection</div>
+                    <div class="penalty-step-desc">
+                        Attempt to disable or delete the extension? You are immediately kicked out of your ZeroFeed account and removed from the active guild.
+                    </div>
+                </div>
+                <div class="penalty-step-card">
+                    <div class="penalty-step-num">PENALTY 02</div>
+                    <div class="penalty-step-title">🔥 Streak Annihilated to 0</div>
+                    <div class="penalty-step-desc">
+                        Your verified study streak drops to 0 days immediately and your failure is recorded on The Graveyard Wall.
+                    </div>
+                </div>
+                <div class="penalty-step-card">
+                    <div class="penalty-step-num">PENALTY 03</div>
+                    <div class="penalty-step-title">💳 Must Re-Purchase Pass</div>
+                    <div class="penalty-step-desc">
+                        Your active pass is forfeited. If you want to return and regain access, you must pay again to re-enter.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dual Showcase: Active Leaders vs Ejected Graveyard Wall -->
+            <div class="graveyard-duel-grid">
+                <!-- Guild Leaderboard (Active Focus Streaks) -->
+                <div class="guild-leaderboard-box">
+                    <div class="duel-header">
+                        <span style="color: #34D399;">🏆 ACTIVE GUILD LEADERS</span>
+                        <span style="color: #6EE7B7; font-size: 0.7rem;" id="leader-subhead">LIVE SUPABASE SYNC</span>
+                    </div>
+                    <ul class="leader-list" id="guild-leader-list">
+                        <li class="leader-item">
+                            <span class="leader-name">🥇 Alex M. · Calculus III</span>
+                            <span class="leader-streak">🔥 48 Days <small style="opacity:0.7;">(Lvl 5)</small></span>
+                        </li>
+                        <li class="leader-item">
+                            <span class="leader-name">🥈 Priya N. · Med Board Prep</span>
+                            <span class="leader-streak">🔥 41 Days <small style="opacity:0.7;">(Lvl 4)</small></span>
+                        </li>
+                        <li class="leader-item">
+                            <span class="leader-name">🥉 Marcus T. · Computer Science</span>
+                            <span class="leader-streak">🔥 36 Days <small style="opacity:0.7;">(Lvl 4)</small></span>
+                        </li>
+                        <li class="leader-item">
+                            <span class="leader-name">⭐ Sarah K. · Law Bar Exam</span>
+                            <span class="leader-streak">🔥 29 Days <small style="opacity:0.7;">(Lvl 3)</small></span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Graveyard Ejected Ledger -->
+                <div class="graveyard-ejected-box">
+                    <div class="duel-header">
+                        <span style="color: #F87171;">⚰️ THE GRAVEYARD WALL</span>
+                        <span style="color: #FCA5A5; font-size: 0.7rem;" id="graveyard-subhead">STREAKS RESET TO 0</span>
+                    </div>
+                    <ul class="ejected-list" id="graveyard-ejected-list">
+                        <li class="ejected-item">
+                            <span class="ejected-name">⚰️ Member #8491</span>
+                            <span class="ejected-tag">RESET TO 0 · Tried to Delete Ext.</span>
+                        </li>
+                        <li class="ejected-item">
+                            <span class="ejected-name">⚰️ Member #3012</span>
+                            <span class="ejected-tag">RESET TO 0 · Missed Daily Block</span>
+                        </li>
+                        <li class="ejected-item">
+                            <span class="ejected-name">⚰️ Member #9104</span>
+                            <span class="ejected-tag">RESET TO 0 · Feed Tamper Attempt</span>
+                        </li>
+                        <li class="ejected-item">
+                            <span class="ejected-name">⚰️ Member #1422</span>
+                            <span class="ejected-tag">RESET TO 0 · Extension Removed</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Live Telemetry Simulator -->
+            <div class="graveyard-telemetry-grid">
+                <div class="telemetry-card">
+                    <div class="telemetry-label">🛡️ Active Session Lock</div>
+                    <div class="telemetry-value" id="telemetry-lock-uptime">99.4% Uptime</div>
+                </div>
+                <div class="telemetry-card">
+                    <div class="telemetry-label">⚡ Global Focus Streaks</div>
+                    <div class="telemetry-value" id="telemetry-focus-days">14,820 Days</div>
+                </div>
+                <div class="telemetry-card">
+                    <div class="telemetry-label">⚰️ Tamper Violations Detected</div>
+                    <div class="telemetry-value warn" id="telemetry-violations-count">0 Recorded</div>
+                </div>
+            </div>
+
+            <div class="graveyard-rules-box">
+                <span style="font-size: 1.8rem;">⚡</span>
+                <div>
+                    <strong style="font-family: var(--font-mono); color: var(--color-yellow); display: block; margin-bottom: 2px;">
+                        <span class="highlight-wrap"><span class="highlight-text" style="color:var(--color-yellow);">THE UNBREAKABLE COMMITMENT CODE</span><span class="highlight-marker marker-yellow shape-2" style="background-color: rgba(253, 224, 71, 0.25);"></span></span>
+                    </strong>
+                    <span style="font-size: 0.82rem; color: #D4D4D8;">
+                        When disabling the extension means losing your account, wiping your streak to 0, and having to pay again to re-enter — your dopamine impulses lose. You study.
+                    </span>
+                </div>
+            </div>
+
+        </section>
+
+        <hr class="section-divider" />
+
+        <!-- ============================================================ -->
+        <!-- KEEP VS BLOCK & 21-POINT SURGICAL STRIPPER SECTION           -->
+        <!-- ============================================================ -->
+        <section class="section" id="features">
+
+            <div class="section-header">
+                <span class="sticker-badge green">YOU STILL NEED THE INTERNET</span>
+                <h2 class="section-title">
+                    The <span class="highlight-wrap"><span class="highlight-text">Smart Way</span><span class="highlight-marker marker-green shape-1"></span></span> to Study Online
+                </h2>
+                <p class="section-desc">
+                    Unlike crude blockers that shut down everything, ZeroFeed keeps the educational tools you need and <span class="highlight-wrap"><span class="highlight-text">eliminates the features</span><span class="highlight-marker marker-pink shape-2"></span></span> engineered to addict you.
+                </p>
+            </div>
+
+            <div class="compare-grid-cards">
+                <!-- What You Keep -->
+                <div class="card-keep">
+                    <div class="card-badge-header">
+                        <h3><span style="color: #15803D;">✓</span> What You Keep (Tools)</h3>
+                        <span class="sticker-badge green" style="font-size: 0.65rem;">ESSENTIAL</span>
+                    </div>
+                    <ul class="feature-checklist">
+                        <li><span class="check-icon-good">✓</span> <span>Watch lectures &amp; educational video lessons</span></li>
+                        <li><span class="check-icon-good">✓</span> <span>Search for specific tutorials &amp; explanations</span></li>
+                        <li><span class="check-icon-good">✓</span> <span>Submit online assignments &amp; quizzes</span></li>
+                        <li><span class="check-icon-good">✓</span> <span>Access Google Docs, Notion &amp; study portals</span></li>
+                        <li><span class="check-icon-good">✓</span> <span>Research papers and academic sources</span></li>
+                        <li><span class="check-icon-good">✓</span> <span>Join live classes &amp; university streams</span></li>
+                    </ul>
+                </div>
+
+                <!-- What ZeroFeed Blocks -->
+                <div class="card-block">
+                    <div class="card-badge-header">
+                        <h3><span style="color: #B91C1C;">✕</span> What Gets Blocked (Traps)</h3>
+                        <span class="sticker-badge" style="font-size: 0.65rem; background: #FCA5A5;">NEUTRALIZED</span>
+                    </div>
+                    <ul class="feature-checklist">
+                        <li><span class="check-icon-bad">✕</span> <span class="strike-item">Endless recommended sidebar videos</span></li>
+                        <li><span class="check-icon-bad">✕</span> <span class="strike-item">YouTube Shorts &amp; Reels carousels</span></li>
+                        <li><span class="check-icon-bad">✕</span> <span class="strike-item">Trending tab &amp; clickbait thumbnails</span></li>
+                        <li><span class="check-icon-bad">✕</span> <span class="strike-item">Infinite auto-refresh social media feeds</span></li>
+                        <li><span class="check-icon-bad">✕</span> <span class="strike-item">Aggressive autoplay distractions</span></li>
+                        <li><span class="check-icon-bad">✕</span> <span class="strike-item">“Just one more video” dopamine spiral</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 21-Point YouTube Surgical Stripper Matrix -->
+            <div class="stripper-matrix-container">
+                <div class="stripper-matrix-header">
+                    <div>
+                        <span class="sticker-badge yellow">SURGICAL PRECISION CONTROLS</span>
+                        <h3 style="font-family: var(--font-display); font-size: 1.5rem; margin-top: 4px;">
+                            21 YouTube Distraction Traps <span class="highlight-wrap"><span class="highlight-text">Stripped on Command</span><span class="highlight-marker marker-yellow shape-3"></span></span>
+                        </h3>
+                    </div>
+                    <span class="status-pill" style="background: #DCFCE7; color: #15803D; border-color: #15803D;">
+                        ● 21 OF 21 SHIELDS ACTIVE
+                    </span>
+                </div>
+
+                <div class="stripper-matrix-grid">
+                    <div class="strip-item-badge"><span>🚫 Hide Home Feed</span> <span class="strip-status-pill">BLOCKED</span></div>
+                    <div class="strip-item-badge"><span>🚫 Hide Video Sidebar</span> <span class="strip-status-pill">BLOCKED</span></div>
+                    <div class="strip-item-badge"><span>🚫 Hide Recommended</span> <span class="strip-status-pill">BLOCKED</span></div>
+                    <div class="strip-item-badge"><span>🚫 Hide Live Chat</span> <span class="strip-status-pill">BLOCKED</span></div>
+                    <div class="strip-item-badge"><span>🚫 Hide Playlist</span> <span class="strip-status-pill">BLOCKED</span></div>
+                    <div class="strip-item-badge"><span>🚫 Hide Fundraiser</span> <span class="strip-status-pill">BLOCKED</span></div>
+                    <div class="strip-item-badge"><span>🚫 Hide End Screen Feed</span> <span class="strip-status-pill">BLOCKED</span></div>
+                    <div class="strip-item-badge"><span>🚫 Hide End Screen Cards</span> <span class="strip-status-pill">BLOCKED</span></div>
+                    <div class="strip-item-badge"><span>🚫 Hide Shorts</span> <span class="strip-status-pill">BLOCKED</span></div>
+                    <div class="strip-item-badge"><span>🚫 Hide Comments</span> <span class="strip-status-pill">BLOCKED</span></div>
+                    <div class="strip-item-badge"><span>🚫 Hide Mixes</span> <span class="strip-status-pill">BLOCKED</span></div>
+                    <div class="strip-item-badge"><span>🚫 Hide Merch &amp; Offers</span> <span class="strip-status-pill">BLOCKED</span></div>
+                    <div class="strip-item-badge"><span>🚫 Hide Video Info</span> <span class="strip-status-pill">BLOCKED</span></div>
+                    <div class="strip-item-badge"><span>🚫 Hide Top Header</span> <span class="strip-status-pill">BLOCKED</span></div>
+                    <div class="strip-item-badge"><span>🚫 Hide Notifications</span> <span class="strip-status-pill">BLOCKED</span></div>
+                    <div class="strip-item-badge"><span>🚫 Hide Inapt Search</span> <span class="strip-status-pill">BLOCKED</span></div>
+                    <div class="strip-item-badge"><span>🚫 Hide Explore &amp; Trending</span> <span class="strip-status-pill">BLOCKED</span></div>
+                    <div class="strip-item-badge"><span>🚫 Hide More from YouTube</span> <span class="strip-status-pill">BLOCKED</span></div>
+                    <div class="strip-item-badge"><span>🚫 Hide Subscriptions</span> <span class="strip-status-pill">BLOCKED</span></div>
+                    <div class="strip-item-badge"><span>🚫 Disable Autoplay</span> <span class="strip-status-pill">DISABLED</span></div>
+                    <div class="strip-item-badge"><span>🚫 Disable Annotations</span> <span class="strip-status-pill">DISABLED</span></div>
+                </div>
+            </div>
+
+            <!-- Universal Single Account & Cross-Browser Sync Card -->
+            <div class="cross-browser-sync-card">
+                <div>
+                    <strong style="font-family: var(--font-mono); font-size: 0.95rem; display: block; margin-bottom: 4px;">
+                        🌐 1 ACCOUNT · GOOGLE SIGN-IN · SYNC ACROSS ALL BROWSERS
+                    </strong>
+                    <span style="font-size: 0.82rem; color: var(--color-text-muted);">
+                        Create one single account and seamlessly log in via Google Chrome extension or Mozilla Firefox add-on with cloud streak synchronization.
+                    </span>
+                </div>
+                <div class="browser-badges-group">
+                    <div class="browser-badge-pill">
+                        <span>🌐</span> <span>Google Chrome Extension</span>
+                    </div>
+                    <div class="browser-badge-pill">
+                        <span>🦊</span> <span>Mozilla Firefox Add-on</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Study Environment Grid -->
+            <div style="margin-top: var(--space-7);">
+                <div style="text-align: center; margin-bottom: var(--space-4);">
+                    <span class="sticker-badge yellow">BUILT FOR EVERY ACADEMIC NEED</span>
+                    <h3 style="font-family: var(--font-display); font-size: 1.9rem; margin-top: 6px;">
+                        Turn Your Browser Into a <span class="highlight-wrap"><span class="highlight-text">Study Sanctuary</span><span class="highlight-marker marker-yellow shape-3"></span></span>
+                    </h3>
+                </div>
+
+                <div class="study-tools-grid">
+                    <div class="tool-tile">
+                        <span class="tool-tile-icon">📘</span>
+                        <div class="tool-tile-name">Exam Prep</div>
+                    </div>
+                    <div class="tool-tile">
+                        <span class="tool-tile-icon">📝</span>
+                        <div class="tool-tile-name">Homework</div>
+                    </div>
+                    <div class="tool-tile">
+                        <span class="tool-tile-icon">🎓</span>
+                        <div class="tool-tile-name">Online Classes</div>
+                    </div>
+                    <div class="tool-tile">
+                        <span class="tool-tile-icon">🔬</span>
+                        <div class="tool-tile-name">Research</div>
+                    </div>
+                    <div class="tool-tile">
+                        <span class="tool-tile-icon">📖</span>
+                        <div class="tool-tile-name">Lecture Review</div>
+                    </div>
+                    <div class="tool-tile">
+                        <span class="tool-tile-icon">📓</span>
+                        <div class="tool-tile-name">Note-Taking</div>
+                    </div>
+                    <div class="tool-tile">
+                        <span class="tool-tile-icon">⚡</span>
+                        <div class="tool-tile-name">Skill Mastery</div>
+                    </div>
+                    <div class="tool-tile">
+                        <span class="tool-tile-icon">📅</span>
+                        <div class="tool-tile-name">Daily Streaks</div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- PROTOCOL SECTION (TIMELINE ROADMAP)                          -->
+        <!-- ============================================================ -->
+        <section class="section" id="protocol">
+
+            <div class="section-header">
+                <span class="sticker-badge green">THE ZEROFEED STUDY PROTOCOL</span>
+                <h2 class="section-title">
+                    How ZeroFeed <span class="highlight-wrap"><span class="highlight-text">Protects Your Focus</span><span class="highlight-marker marker-green shape-1"></span></span>
+                </h2>
+                <p class="section-desc">
+                    A streamlined, scientifically grounded workflow designed to build <span class="highlight-wrap"><span class="highlight-text">unbreakable study habits.</span><span class="highlight-marker marker-purple shape-3"></span></span>
+                </p>
+            </div>
+
+            <div class="protocol-steps-list">
+                <div class="protocol-row-card">
+                    <div class="protocol-badge-num">01</div>
+                    <div class="protocol-text-block">
+                        <strong>INSTALL &amp; CONFIGURE</strong>
+                        <span>Install ZeroFeed extension and define your primary learning targets and study subjects.</span>
+                    </div>
+                </div>
+
+                <div class="protocol-row-card">
+                    <div class="protocol-badge-num">02</div>
+                    <div class="protocol-text-block">
+                        <strong><span class="highlight-wrap"><span class="highlight-text">THE ULYSSES PACT</span><span class="highlight-marker marker-yellow shape-2"></span></span></strong>
+                        <span>Enter a one-way commitment. Set your lock duration and link an accountability partner who holds your emergency exit key.</span>
+                    </div>
+                </div>
+
+                <div class="protocol-row-card">
+                    <div class="protocol-badge-num">03</div>
+                    <div class="protocol-text-block">
+                        <strong>UNDELETABLE SHIELD</strong>
+                        <span>The extension cannot be disabled or uninstalled from Chrome. Feeds, Shorts, and rabbit holes vanish completely.</span>
+                    </div>
+                </div>
+
+                <div class="protocol-row-card">
+                    <div class="protocol-badge-num">04</div>
+                    <div class="protocol-text-block">
+                        <strong>MASTER &amp; ABSORB</strong>
+                        <span>Complete assignments, watch educational lessons, review notes, and solve practice questions.</span>
+                    </div>
+                </div>
+
+                <div class="protocol-row-card">
+                    <div class="protocol-badge-num">05</div>
+                    <div class="protocol-text-block">
+                        <strong><span class="highlight-wrap"><span class="highlight-text">BUILD YOUR STREAK</span><span class="highlight-marker marker-green shape-4"></span></span></strong>
+                        <span>Watch your accountability record grow with daily streak telemetry and verified focus hours.</span>
+                    </div>
+                </div>
+
+                <div class="protocol-row-card">
+                    <div class="protocol-badge-num">06</div>
+                    <div class="protocol-text-block">
+                        <strong>RECOVER &amp; ADVANCE</strong>
+                        <span>If you ever break a commitment, follow the recovery protocol and start an even stronger study streak.</span>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <hr class="section-divider" />
+
+        <!-- ============================================================ -->
+        <!-- OLD WAY VS ZEROFEED WAY (BATTLE SECTION)                     -->
+        <!-- ============================================================ -->
+        <section class="section" id="battle">
+
+            <div class="section-header">
+                <span class="sticker-badge yellow">THE WILLPOWER SHOWDOWN</span>
+                <h2 class="section-title">
+                    Unhook Gives You Settings.<br />
+                    <span class="highlight-wrap">
+                        <span class="highlight-text">ZeroFeed Gives You Handcuffs.</span>
+                        <span class="highlight-marker marker-green shape-1"></span>
+                    </span>
+                </h2>
+                <p class="section-desc" style="max-width: 680px; margin: 12px auto 0;">
+                    Free extensions fail because they leave the keys in your hands. When you're exhausted at 10 PM, a 2-click disable switch is all it takes to spiral into a 5-hour Shorts rabbit hole.
+                </p>
+            </div>
+
+            <div class="battle-grid">
+                <!-- Free Blockers (Unhook Trap) -->
+                <div class="battle-card old-way">
+                    <div class="battle-card-title" style="color: #EF4444;">Free Blockers (Unhook / DF Tube)</div>
+                    <ul class="battle-steps-list">
+                        <li><span>🔓</span> <span><strong>2-Click Bypass:</strong> Turn feeds back on whenever an urge strikes</span></li>
+                        <li><span>🗑️</span> <span><strong>Instant Delete:</strong> Right-click → Remove from Chrome in 3 seconds</span></li>
+                        <li><span>🧠</span> <span><strong>100% Willpower Dependent:</strong> Relies on discipline you don't have after 8 PM</span></li>
+                        <li><span>📱</span> <span><strong>The Relapse Trap:</strong> "Just 5 mins of Shorts" turns into 4–6 lost hours</span></li>
+                        <li><span>😞</span> <span><strong>Guilt &amp; Regret:</strong> Missed deadlines, sleep deprivation, ruined semester</span></li>
+                    </ul>
+                </div>
+
+                <!-- ZeroFeed Way -->
+                <div class="battle-card new-way">
+                    <div class="battle-card-title" style="color: #15803D;">
+                        The <span class="highlight-wrap"><span class="highlight-text">ZeroFeed Lockdown</span><span class="highlight-marker marker-green shape-2"></span></span>
+                    </div>
+                    <ul class="battle-steps-list">
+                        <li><span>🔒</span> <span><strong>No Off-Switch:</strong> Zero toggle switches once your study lock engages</span></li>
+                        <li><span>🚫</span> <span><strong>Undeletable:</strong> Chrome enterprise-grade lockdown prevents uninstalling</span></li>
+                        <li><span>🤝</span> <span><strong>Partner Emergency Key:</strong> Only your designated study partner can unlock</span></li>
+                        <li><span>⚡</span> <span><strong>Total Dopamine Cleansing:</strong> All 21 feed &amp; Shorts triggers surgically deleted</span></li>
+                        <li><span>🏆</span> <span><strong>Guaranteed Completion:</strong> Deep work locked in. Free time earned guilt-free</span></li>
+                    </ul>
+                </div>
+            </div>
+
+        </section>
+
+        <hr class="section-divider" />
+
+        <!-- ============================================================ -->
+        <!-- PRICING SECTION (CONVERSION-FOCUSED SAAS PRICING)            -->
+        <!-- ============================================================ -->
+        <hr class="section-divider" />
+
+        <!-- ============================================================ -->
+        <!-- PRICING SECTION (MICRO-SAAS 7-DAY FREE TRIAL PLAYBOOK)       -->
+        <!-- ============================================================ -->
+        <hr class="section-divider" />
+
+        <!-- ============================================================ -->
+        <!-- PRICING SECTION (MARC LOU STYLE: OUTCOME-FIRST PRICING)      -->
+        <!-- ============================================================ -->
+        <section class="section" id="pricing">
+
+            <div class="section-header" style="text-align: center;">
+                <span class="sticker-badge" style="background: var(--color-primary); color: white;">⚡ ATTENTION PROTECTION SYSTEM · ZERO DISTRACTIONS</span>
+                <h2 class="section-title">
+                    Focus Pricing &amp; <span class="highlight-wrap"><span class="highlight-text">Access Passes</span><span class="highlight-marker marker-pink shape-1"></span></span>
+                </h2>
+                
+                <!-- Marc Lou Problem -> Failure -> Solution Narrative Framing -->
+                <div class="pricing-outcome-story brutal-card" style="max-width: 840px; margin: 18px auto 28px auto; padding: 22px 28px; background: #FFFDF8; text-align: left; border: var(--border-main); box-shadow: var(--shadow-md); border-radius: 18px;">
+                    <div style="display: flex; align-items: flex-start; gap: 14px; margin-bottom: 12px;">
+                        <span style="font-size: 1.8rem; line-height: 1;">💡</span>
+                        <div>
+                            <div style="font-family: var(--font-mono); font-weight: 800; font-size: 0.95rem; color: var(--color-text); margin-bottom: 4px;">
+                                You open YouTube to study. 20 minutes later you’re watching Shorts.
+                            </div>
+                            <p style="font-size: 0.88rem; color: var(--color-text-muted); line-height: 1.55; margin: 0;">
+                                Traditional blockers say <em>“Don’t visit YouTube.”</em> <strong>ZeroFeed is different:</strong> it lets you use YouTube for a lecture while removing the algorithmic feed, recommendation traps, and dopamine loops that keep you there.
+                            </p>
+                        </div>
+                    </div>
+                    <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; padding-top: 12px; border-top: 2px dashed #E4E4E7; font-family: var(--font-mono); font-size: 0.78rem; font-weight: 700; color: var(--color-text);">
+                        <span>🖥️ A distraction-control system for your devices · One ZeroFeed plan. All your devices.</span>
+                        <span style="color: var(--color-primary); font-weight: 800;">Choose how seriously you want to protect your attention ↓</span>
+                    </div>
+                </div>
+
+                <!-- Natural Handwritten Live Counter Badge -->
+                <div class="pricing-live-handwritten-badge">
+                    <span class="handwritten-sparkle">✍️</span>
+                    <span class="handwritten-label">Founding Deal Spots:</span>
+                    <span id="founder-header-claimed" class="handwritten-num">1</span> / <strong>100</strong> Claimed
+                    <span class="handwritten-tag" id="founder-header-remaining">· Only 99 Spots Left!</span>
+                </div>
+            </div>
+
+            <!-- Pricing Cards (Student Pro / Lifetime) -->
+            <div class="pricing-cards-grid" style="align-items: stretch; max-width: 900px; margin-left: auto; margin-right: auto;">
+
+                <!-- 2. STUDENT PRO (Visually Dominant Main Offer: $24/year · $2/mo) -->
+                <div class="pricing-tier-card featured" id="card-student" style="transform: scale(1.03); z-index: 2; border: 3.5px solid var(--color-primary); box-shadow: 8px 8px 0px 0px var(--color-primary); background: #FFFDF8;">
+                    <div class="popular-corner-tag" style="background: var(--color-yellow); border: 2px solid var(--color-text); box-shadow: 2px 2px 0px var(--color-text);">
+                        ★ STUDENT CHOICE ⭐ · MOST POPULAR
+                    </div>
+                    <div class="pricing-card-top">
+                        <div class="tier-title" style="color: var(--color-primary); font-weight: 800; font-size: 0.95rem;">
+                            <span class="highlight-wrap"><span class="highlight-text">STUDENT PRO</span><span class="highlight-marker marker-yellow shape-2"></span></span>
+                        </div>
+                        <div class="tier-price-amount" style="color: var(--color-primary);">
+                            $24 <span style="font-size: 1.1rem; color: var(--color-text-muted); font-weight: 600;">/ year</span>
+                        </div>
+                        <div class="tier-price-cadence" style="color: var(--color-primary); font-weight: 800; font-size: 0.84rem;">
+                            Just $2/month · Billed annually ($24/yr)
+                        </div>
+                        <span class="tier-savings-pill" style="background: #DCFCE7; color: #166534; border-color: #15803D;">
+                            ⚡ 7-Day Money-Back Guarantee
+                        </span>
+                        <p class="tier-desc" style="font-weight: 700; color: var(--color-text); margin-bottom: 20px;">
+                            “Stop scrolling. Start studying.”
+                            <span style="display: block; font-size: 0.8rem; font-weight: 500; color: var(--color-text-muted); margin-top: 4px;">
+                                Everything you need to stay focused and protect your attention.
+                            </span>
+                        </p>
+
+                        <ul class="tier-feature-list">
+                            <li><span class="feat-check">✓</span> <span><strong>Full algorithmic feed neutralization</strong> across YouTube, Instagram, X/Twitter, Reddit &amp; LinkedIn</span></li>
+                            <li><span class="feat-check">✓</span> <span><strong>Distraction-control system for your devices</strong> (Chrome Extension + Desktop Locker)</span></li>
+                            <li><span class="feat-check">✓</span> <span><strong>One ZeroFeed plan. All your devices.</strong> (Windows, macOS &amp; Linux)</span></li>
+                            <li><span class="feat-check">✓</span> <span><strong>Keep all useful educational content</strong> (Lectures, tutorials, academic searches intact)</span></li>
+                            <li><span class="feat-check">✓</span> <span><strong>Tamper-proof deep study protocol</strong> &amp; un-bypassable focus locks</span></li>
+                            <li><span class="feat-check">✓</span> <span><strong>Verified study hours telemetry</strong> &amp; accountability leaderboard</span></li>
+                            <li><span class="feat-check">✓</span> <span><strong>7-Day Money-Back Guarantee:</strong> 100% refund if not satisfied</span></li>
+                        </ul>
+                    </div>
+
+                    <!-- Student Checkout Action -->
+                    <div class="pricing-card-bottom" id="checkout-annual">
+                        <button type="button" id="btn-join-annual" class="btn-primary full-width-cta">
+                            Get ZeroFeed ($24/year) →
+                        </button>
+                        <div class="pricing-trust-caption">
+                            🛡️ 7-Day Money-Back Guarantee · UPI, Cards, Netbanking · Instant Desktop Activation
+                        </div>
+                        <div id="annual-success-message" class="founder-success-box" style="display: none;">
+                            <strong>✓ Student Pro Activated!</strong>
+                            <div style="font-size: 0.7rem; margin-top: 2px;">
+                                Subscription credited. Check below to open ZeroFeed Desktop.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. LIFETIME (Founding Deal · $39 One-Time) -->
+                <div class="pricing-tier-card founder-card" id="card-founder">
+                    <div class="popular-corner-tag" style="background: #F59E0B; color: #000;">👑 FOUNDING DEAL · FIRST 100 STUDENTS</div>
+                    <div class="pricing-card-top">
+                        <div class="tier-title" style="color: #D97706; font-weight: 800;">
+                            LIFETIME
+                        </div>
+                        <div class="tier-price-amount" style="color: #D97706;">
+                            $39 <span style="font-size: 1.15rem; text-decoration: line-through; color: #9CA3AF; font-weight: 600;">$59</span>
+                        </div>
+                        <div class="tier-price-cadence">
+                            One payment · No recurring subscription
+                        </div>
+                        <span class="tier-savings-pill" style="background: #FEF3C7; color: #92400E; border-color: #D97706;">
+                            👑 Pay once. Stay focused forever.
+                        </span>
+                        <p class="tier-desc" style="font-weight: 700; color: var(--color-text); margin-bottom: 12px;">
+                            “Pay once. Stay focused forever.”
+                            <span style="display: block; font-size: 0.8rem; font-weight: 500; color: var(--color-text-muted); margin-top: 4px;">
+                                First 100 students only. Everything in Pro, for life.
+                            </span>
+                        </p>
+
+                        <!-- Live Spots Count -->
+                        <div class="handwritten-spots-note" style="margin: 4px 0 16px 0; width: 100%;">
+                            <span class="handwritten-sparkle">⚡</span>
+                            <div style="font-size: 0.95rem;">
+                                <span id="founder-claimed-count" class="handwritten-highlight">1</span> / <strong>100</strong> claimed
+                                <span style="font-size: 0.85rem; color: #4B5563; margin-left: 4px;" id="founder-remaining-text">· Only 99 Spots Remaining</span>
+                            </div>
+                        </div>
+
+                        <ul class="tier-feature-list">
+                            <li><span class="feat-check">✓</span> <span><strong>Everything in Student Pro</strong> forever</span></li>
+                            <li><span class="feat-check">✓</span> <span><strong>Pay once:</strong> No recurring monthly or yearly subscription</span></li>
+                            <li><span class="feat-check">✓</span> <span><strong>All future platforms &amp; AI updates</strong> included</span></li>
+                            <li><span class="feat-check">✓</span> <span><strong>Chrome Extension + Windows + macOS + Linux</strong></span></li>
+                            <li><span class="feat-check">✓</span> <span><strong>VIP Product Hunt Day 1 status</strong> &amp; founder badge</span></li>
+                            <li><span class="feat-check">✓</span> <span><strong>Self-selected permanent lock limits</strong></span></li>
+                        </ul>
+                    </div>
+
+                    <!-- Founder Checkout Action -->
+                    <div class="pricing-card-bottom" id="checkout-founder">
+                        <button type="button" id="btn-join-founder" class="btn-primary full-width-cta">
+                            Get Lifetime ($39) →
+                        </button>
+                        <div class="pricing-trust-caption">
+                            🛡️ Razorpay 256-Bit SSL · UPI, Cards, Netbanking · Instant Desktop Activation
+                        </div>
+                        <div id="founder-success-message" class="founder-success-box" style="display: none;">
+                            <strong>🎉 Lifetime Founding Pass Activated!</strong>
+                            <div style="font-size: 0.7rem; margin-top: 2px;">
+                                Lifetime VIP status granted. Check below to open ZeroFeed Desktop.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Desktop App Handoff Modal / Callout Container -->
+            <div id="desktop-handoff-modal" class="brutal-card" style="display: none; margin-top: 32px; padding: 28px 32px; background: #F0FDF4; border: 3.5px solid #059669; box-shadow: 6px 6px 0px #059669; text-align: center;">
+                <div class="sticker-badge green" style="font-size: 0.85rem; padding: 6px 16px; margin-bottom: 12px;">
+                    ✓ SUBSCRIPTION CONFIRMED &amp; PROFILE PROVISIONED
+                </div>
+                <h3 style="font-family: var(--font-display); font-size: 2.2rem; color: #065F46; margin-bottom: 8px;">
+                    Welcome to ZeroFeed! 🚀
+                </h3>
+                <p style="color: var(--color-text); max-width: 600px; margin: 0 auto 20px auto; font-size: 1rem; line-height: 1.5;">
+                    Your payment was verified and subscription days have been credited to your account. Click below to launch and automatically unlock your ZeroFeed Desktop application.
+                </p>
+                <div style="display: flex; justify-content: center; gap: 14px; flex-wrap: wrap;">
+                    <a id="btn-open-desktop" href="zerofeed://auth/callback" class="btn-primary" style="background: #059669; font-size: 1.05rem; padding: 14px 32px;">
+                        🖥️ Open ZeroFeed Desktop App →
+                    </a>
+                    <button id="btn-copy-token" class="btn-secondary" style="font-size: 0.9rem; padding: 12px 20px;">
+                        📋 Copy Session Token
+                    </button>
+                </div>
+                <div id="token-copied-toast" style="display: none; margin-top: 10px; font-family: var(--font-mono); font-size: 0.75rem; color: #059669; font-weight: 700;">
+                    ✓ Token copied to clipboard! You can paste it into the desktop app if prompted.
+                </div>
+            </div>
+
+            <!-- Trust, Security & Guarantee Reassurance Bar (Marc Lou Risk Reversal) -->
+            <div class="pricing-trust-bar" style="margin-top: 36px;">
+                <div class="pricing-trust-item">
+                    <span>🛡️</span> <span><strong>7-Day Money-Back Guarantee:</strong> 100% refund, no questions asked</span>
+                </div>
+                <div class="pricing-trust-item">
+                    <span>🖥️</span> <span>One plan works on Chrome Extension + Desktop (Mac/Win/Linux)</span>
+                </div>
+                <div class="pricing-trust-item">
+                    <span>🔒</span> <span>Razorpay 256-Bit SSL · UPI, Rupay, Visa, Netbanking</span>
+                </div>
+                <div class="pricing-trust-item">
+                    <span>👑</span> <span>$39 Lifetime Deal for First 100 Students</span>
+                </div>
+            </div>
+
+            <!-- Custom Pricing & Team Inquiry Prompt -->
+            <div class="custom-pricing-banner" style="margin-top: 24px;">
+                <div class="custom-pricing-content">
+                    <span class="custom-pricing-icon">💬</span>
+                    <div>
+                        <strong style="color: var(--color-text); font-size: 0.95rem;">Need Custom Pricing, Campus Access, or Student Aid?</strong>
+                        <p style="font-size: 0.8rem; color: var(--color-text-muted); margin: 2px 0 0 0;">
+                            We believe financial constraints shouldn't stop serious focus. Reach out directly for custom arrangements.
+                        </p>
+                    </div>
+                </div>
+                <a href="mailto:dhanasurya.official@gmail.com?subject=ZeroFeed%20Custom%20Pricing%20Inquiry" class="btn-secondary custom-pricing-btn" id="btn-custom-pricing-inquiry">
+                    ✉️ Request Custom Pricing
+                </a>
+            </div>
+
+            <!-- 6-Digit Email Verification Modal (Accessible, Segmented Input) -->
+            <div id="otp-verification-modal" class="otp-modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="otp-modal-title" style="display: none;">
+                <div class="otp-modal-card brutal-card">
+                    <button type="button" class="otp-modal-close" id="btn-close-otp-modal" aria-label="Close verification modal">✕</button>
+                    <div class="otp-modal-header">
+                        <span class="sticker-badge yellow" style="font-size: 0.72rem; padding: 2px 8px; margin-bottom: 8px; display: inline-block;">🔒 ZEROFEED SECURITY</span>
+                        <h3 id="otp-modal-title" class="otp-modal-title">Confirm Your Email</h3>
+                        <p class="otp-modal-desc">
+                            We sent a 6-digit verification code to <br />
+                            <strong id="otp-modal-email-display" class="otp-recipient-email">user@email.com</strong>
+                        </p>
+                    </div>
+
+                    <!-- Dev mode OTP preview banner -->
+                    <div id="otp-dev-hint" class="otp-dev-banner" style="display: none;">
+                        <span>🧪 Dev Code: <strong id="otp-dev-code" class="otp-dev-val">------</strong></span>
+                        <button type="button" id="btn-otp-fill-dev" class="otp-fill-dev-btn">Auto-Fill</button>
+                    </div>
+
+                    <!-- 6-digit segmented inputs -->
+                    <div class="otp-inputs-grid" role="group" aria-label="6-digit verification code">
+                        <input type="text" id="otp-digit-0" name="otp_digit_0" maxlength="1" inputmode="numeric" pattern="[0-9]*" class="otp-digit-box" data-index="0" aria-label="Digit 1 of 6" autocomplete="one-time-code" />
+                        <input type="text" id="otp-digit-1" name="otp_digit_1" maxlength="1" inputmode="numeric" pattern="[0-9]*" class="otp-digit-box" data-index="1" aria-label="Digit 2 of 6" />
+                        <input type="text" id="otp-digit-2" name="otp_digit_2" maxlength="1" inputmode="numeric" pattern="[0-9]*" class="otp-digit-box" data-index="2" aria-label="Digit 3 of 6" />
+                        <input type="text" id="otp-digit-3" name="otp_digit_3" maxlength="1" inputmode="numeric" pattern="[0-9]*" class="otp-digit-box" data-index="3" aria-label="Digit 4 of 6" />
+                        <input type="text" id="otp-digit-4" name="otp_digit_4" maxlength="1" inputmode="numeric" pattern="[0-9]*" class="otp-digit-box" data-index="4" aria-label="Digit 5 of 6" />
+                        <input type="text" id="otp-digit-5" name="otp_digit_5" maxlength="1" inputmode="numeric" pattern="[0-9]*" class="otp-digit-box" data-index="5" aria-label="Digit 6 of 6" />
+                    </div>
+
+                    <!-- Inline error / alert banner -->
+                    <div id="otp-modal-error" class="otp-error-alert" style="display: none;" role="alert"></div>
+
+                    <!-- Modal Action Buttons -->
+                    <button type="button" id="btn-submit-otp" class="btn-primary otp-submit-btn">
+                        Confirm &amp; Proceed to Checkout →
+                    </button>
+
+                    <div class="otp-modal-footer">
+                        <button type="button" id="btn-resend-otp-modal" class="otp-action-link">
+                            🔄 Resend code
+                        </button>
+                        <button type="button" id="btn-cancel-otp-modal" class="otp-action-link text-muted">
+                            Cancel
+                        </button>
+                    </div>
+                    <div id="otp-resend-feedback" class="otp-resend-status" style="display: none;">
+                        ✓ Fresh verification code sent to your inbox!
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+
+        <hr class="section-divider" />
+
+        <!-- ============================================================ -->
+        <!-- FAQ SECTION (ACCORDION)                                      -->
+        <!-- ============================================================ -->
+        <section class="section" id="faq">
+
+            <div class="section-header">
+                <span class="sticker-badge yellow">FREQUENTLY ASKED QUESTIONS</span>
+                <h2 class="section-title">
+                    Everything You <span class="highlight-wrap"><span class="highlight-text">Need to Know</span><span class="highlight-marker marker-yellow shape-1"></span></span>
+                </h2>
+            </div>
+
+            <div class="faq-accordion-group">
+
+                <details class="faq-card-item" open>
+                    <summary>
+                        <span>Why should I pay for ZeroFeed when Unhook is free?</span>
+                        <span class="faq-toggle-icon">+</span>
+                    </summary>
+                    <div class="faq-answer-content">
+                        Because <strong>you can turn Unhook off in 3 seconds</strong> the moment study gets hard or your willpower fades. If you had the superhuman discipline not to disable a free blocker at 10 PM, you wouldn't need a blocker in the first place. ZeroFeed removes your weak moments from the equation: <strong>it cannot be disabled, turned off, or uninstalled</strong> on a whim.
+                    </div>
+                </details>
+
+                <details class="faq-card-item">
+                    <summary>
+                        <span>What prevents me from just deleting or uninstalling ZeroFeed?</span>
+                        <span class="faq-toggle-icon">+</span>
+                    </summary>
+                    <div class="faq-answer-content">
+                        ZeroFeed uses <strong>enterprise-grade browser policy management and partner-linked verification</strong>. Once your commitment starts, the extension is locked into Chrome. You cannot right-click and remove it, nor toggle it off. If you have a legitimate emergency, your designated accountability partner must approve your early unlock.
+                    </div>
+                </details>
+
+                <details class="faq-card-item">
+                    <summary>
+                        <span>How does the 31-day Monthly Account validity and renewal work?</span>
+                        <span class="faq-toggle-icon">+</span>
+                    </summary>
+                    <div class="faq-answer-content">
+                        A Monthly Account is active for exactly <strong>31 days</strong> from the moment of activation. Once the account reaches 31 days, it automatically transitions to an expired state and displays a <strong>renewal message</strong> directly in your browser, allowing you to renew your pass with 1 click to maintain your uninterrupted focus streak.
+                    </div>
+                </details>
+
+                <details class="faq-card-item">
+                    <summary>
+                        <span>How does the 1-Year Locked Account and Warning Email policy work?</span>
+                        <span class="faq-toggle-icon">+</span>
+                    </summary>
+                    <div class="faq-answer-content">
+                        Yearly accounts remain <strong>strictly locked for the full 1-year period (365 days)</strong> to enforce unshakeable academic commitment. Users are not permitted to use or tamper with a locked yearly account during the lock duration. If an attempt is made to use a locked yearly account, our security system immediately <strong>dispatches a warning email</strong> and permanently <strong>removes the user from the account</strong>, forfeiting the pass.
+                    </div>
+                </details>
+
+                <details class="faq-card-item">
+                    <summary>
+                        <span>What exact 21 elements does ZeroFeed remove from YouTube?</span>
+                        <span class="faq-toggle-icon">+</span>
+                    </summary>
+                    <div class="faq-answer-content">
+                        ZeroFeed surgically hides 21 distraction vectors: <strong>Home Feed, Video Sidebar, Recommended Videos, Live Chat, Playlists recommendations, Fundraisers, End Screen Feeds, End Screen Cards, Shorts, Comments, Mixes, Merch/Offers, Video Info clutter, Top Header, Notifications, Inappropriate Search Results, Explore/Trending, More from YouTube, Subscriptions feed, Autoplay loops, and Annotations</strong>. Your search bar and full-length lecture player remain 100% functional.
+                    </div>
+                </details>
+
+                <details class="faq-card-item">
+                    <summary>
+                        <span>Which browsers are supported and how does login work?</span>
+                        <span class="faq-toggle-icon">+</span>
+                    </summary>
+                    <div class="faq-answer-content">
+                        You create <strong>one single account</strong> and log in with Google. ZeroFeed works seamlessly across <strong>Google Chrome</strong> (and all Chromium browsers like Brave, Edge, Arc) as well as <strong>Mozilla Firefox</strong> with real-time cloud streak synchronization.
+                    </div>
+                </details>
+
+                <details class="faq-card-item">
+                    <summary>
+                        <span>Can I still watch educational courses and university lectures?</span>
+                        <span class="faq-toggle-icon">+</span>
+                    </summary>
+                    <div class="faq-answer-content">
+                        Yes, 100%! You can search for specific topics, watch full courses, pause, rewind, adjust playback speed, and view video playlists. What disappears is the homepage feed, sidebar recommendations, comment rabbit holes, and infinite shorts carousels.
+                    </div>
+                </details>
+
+            </div>
+
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- FINAL CALL TO ACTION BANNER                                  -->
+        <!-- ============================================================ -->
+        <section class="final-cta-banner" id="cta">
+            <div style="display: inline-block; margin-bottom: var(--space-3);">
+                <img src="src/assets/icon.svg" alt="ZeroFeed Mascot" width="64" height="64" loading="lazy" style="width: 64px; height: 64px; margin: 0 auto; border-radius: 14px; border: 2.5px solid var(--color-text); box-shadow: var(--shadow-md); background: #FFAEB4;" />
+            </div>
+
+            <h2 style="font-family: var(--font-display); font-size: clamp(2rem, 4.5vw, 3.2rem); line-height: 1.1; margin-bottom: 14px;">
+                You Don't Need More Willpower.<br />
+                <span class="highlight-wrap">
+                    <span class="highlight-text">You Need a System That Protects Your Focus.</span>
+                    <span class="highlight-marker marker-pink shape-1"></span>
+                </span>
+            </h2>
+
+            <p style="font-size: 1rem; font-weight: 600; color: var(--color-text-muted); max-width: 580px; margin: 0 auto var(--space-5);">
+                Join early students who have <span class="highlight-wrap"><span class="highlight-text">reclaimed 3+ hours daily</span><span class="highlight-marker marker-yellow shape-2"></span></span> and eliminated dopamine traps with ZeroFeed.
+            </p>
+
+            <div style="max-width: 420px; margin-inline: auto;">
+                <a href="#pricing" class="btn-primary" id="final-cta-btn">
+                    ⚡ PROTECT YOUR FOCUS NOW →
+                </a>
+            </div>
+
+            <div style="font-family: var(--font-mono); font-size: 0.78rem; font-weight: 700; color: var(--color-text-muted); margin-top: 14px;">
+                $24/year (Just $2/mo) · $39 Lifetime · One plan. All your devices.
+            </div>
+        </section>
+
+
+</main>
+        <!-- ============================================================ -->
+        <!-- FOOTER & RESOURCE DIRECTORY (SEO INTERNAL LINKING)           -->
+        <!-- ============================================================ -->
+        <footer class="footer-wrap">
+            <div class="footer-main-row">
+                <div class="footer-brand">
+                    <img src="src/assets/icon.svg" alt="ZeroFeed Logo" class="footer-logo-img" width="32" height="32" loading="lazy" />
+                    <span>ZeroFeed</span>
+                </div>
+
+                <div class="footer-meta">
+                    © ZeroFeed · Stop Scrolling. Start Studying. Built for students who want real results.
+                </div>
+
+                <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+                    <a href="/vs/unhook" class="btn-secondary" style="font-size: 0.75rem; padding: 6px 12px;">
+                        ⚔️ Unhook vs ZeroFeed
+                    </a>
+                    <a href="/blog/how-to-block-youtube-shorts" class="btn-secondary" style="font-size: 0.75rem; padding: 6px 12px;">
+                        📖 Block Shorts Guide
+                    </a>
+                    <a href="/for/students" class="btn-secondary" style="font-size: 0.75rem; padding: 6px 12px;">
+                        🎓 Student Pass
+                    </a>
+                    <a href="/privacy" class="btn-secondary" style="font-size: 0.75rem; padding: 6px 12px;">
+                        📜 Privacy
+                    </a>
+                    <a href="#hero" class="btn-secondary" style="font-size: 0.75rem; padding: 6px 12px;">
+                        ↑ Top
+                    </a>
+                </div>
+            </div>
+        </footer>
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+<script src="src/js/app.js"></script>
 </body>
 </html>

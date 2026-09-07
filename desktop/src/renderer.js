@@ -8,6 +8,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const userEmailSpan = document.getElementById('user-email');
   const alertBanner = document.getElementById('alert-banner');
 
+  const btnBrowserLogin = document.getElementById('btn-browser-login');
+  const btnChoosePlan = document.getElementById('btn-choose-plan');
   const btnDevLogin = document.getElementById('btn-dev-login');
   const btnTokenLogin = document.getElementById('btn-token-login');
   const googleIdTokenInput = document.getElementById('google-id-token');
@@ -64,14 +66,35 @@ document.addEventListener('DOMContentLoaded', () => {
     userPill.classList.remove('hidden');
 
     userEmailSpan.textContent = user.email;
-    subPlanBadge.textContent = subscription?.plan || 'FREE';
-    
-    if (subscription?.status === 'ACTIVE') {
+
+    const lifetimeBanner = document.getElementById('lifetime-founder-banner');
+    const lifetimeEmail = document.getElementById('lifetime-banner-email');
+    if (lifetimeEmail) {
+      lifetimeEmail.textContent = user.email || 'desktop-user@example.com';
+    }
+
+    const plan = subscription?.plan || 'FREE';
+    const status = subscription?.status || 'INACTIVE';
+    const hasAccess = status === 'ACTIVE' || status === 'TRIAL';
+
+    if (plan === 'LIFETIME' && status === 'ACTIVE') {
+      if (lifetimeBanner) lifetimeBanner.classList.remove('hidden');
+      subPlanBadge.textContent = 'LIFETIME PASS';
+      subPlanBadge.className = 'badge badge-dark-lifetime';
+      subAccessBadge.textContent = 'PERPETUAL ACCESS';
+      subAccessBadge.className = 'badge badge-success';
+    } else if (hasAccess) {
+      if (lifetimeBanner) lifetimeBanner.classList.add('hidden');
+      subPlanBadge.textContent = plan === 'YEARLY' ? 'YEARLY PASS' : plan;
+      subPlanBadge.className = 'badge badge-success';
       subAccessBadge.textContent = 'ACTIVE (PAID)';
       subAccessBadge.className = 'badge badge-success';
     } else {
-      subAccessBadge.textContent = 'INACTIVE (UNPAID)';
-      subAccessBadge.className = 'badge badge-warning';
+      if (lifetimeBanner) lifetimeBanner.classList.add('hidden');
+      subPlanBadge.textContent = 'FREE / INACTIVE';
+      subPlanBadge.className = 'badge badge-neutral';
+      subAccessBadge.textContent = 'LOCKED';
+      subAccessBadge.className = 'badge badge-danger';
     }
 
     refreshPolicyView();
@@ -139,6 +162,40 @@ document.addEventListener('DOMContentLoaded', () => {
     } catch (err) {
       showAlert(err.message, 'error');
     }
+  }
+
+  // Auth: Browser OAuth Login with One-Time Code
+  if (btnBrowserLogin) {
+    btnBrowserLogin.addEventListener('click', async () => {
+      hideAlert();
+      btnBrowserLogin.disabled = true;
+      const originalHtml = btnBrowserLogin.innerHTML;
+      btnBrowserLogin.innerHTML = '<span>⏳ Opening browser for Google Sign-In...</span>';
+
+      try {
+        const res = await window.zeroFeedAPI.auth.startBrowserLogin();
+        btnBrowserLogin.disabled = false;
+        btnBrowserLogin.innerHTML = originalHtml;
+
+        if (res.success) {
+          showAlert(`Signed in successfully as ${res.data.user.email}!`, 'success');
+          showDashboard(res.data.user, res.data.subscription);
+        } else {
+          showAlert(`Sign in failed: ${res.error}`, 'error');
+        }
+      } catch (err) {
+        btnBrowserLogin.disabled = false;
+        btnBrowserLogin.innerHTML = originalHtml;
+        showAlert(err.message || 'Browser login failed.', 'error');
+      }
+    });
+  }
+
+  // Auth: Redirect to Web Portal Pricing / Pass Selection
+  if (btnChoosePlan) {
+    btnChoosePlan.addEventListener('click', () => {
+      window.zeroFeedAPI.auth.openWebPortal('/#pricing');
+    });
   }
 
   // Auth: Dev Mock Login

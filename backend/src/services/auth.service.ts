@@ -9,28 +9,19 @@ export class AuthService {
   private googleClient: OAuth2Client | null = null;
   private authRepo: AuthRepository;
 
-  constructor(repo: AuthRepository = authRepository) {
+  constructor(repo: AuthRepository = authRepository, googleClient?: OAuth2Client) {
     this.authRepo = repo;
-    if (config.google.clientId) {
+    if (googleClient) {
+      this.googleClient = googleClient;
+    } else if (config.google.clientId) {
       this.googleClient = new OAuth2Client(config.google.clientId);
     }
   }
 
   async verifyGoogleIdToken(idToken: string): Promise<GoogleProfile> {
-    // Development Mock Bypass: allows local end-to-end testing without Google Cloud Console credentials
-    if (config.nodeEnv !== 'production' && idToken.startsWith('dev-mock-')) {
-      const email = idToken.replace('dev-mock-', '') || 'test@example.com';
-      return {
-        googleId: `mock-google-id-${Buffer.from(email).toString('hex').substring(0, 12)}`,
-        email: email.toLowerCase(),
-        name: 'ZeroFeed Test User',
-        avatarUrl: 'https://lh3.googleusercontent.com/a/default-user',
-      };
-    }
-
     if (!config.google.clientId) {
       throw new Error(
-        'GOOGLE_CLIENT_ID is not configured in backend environment. Set it in .env or use a dev-mock- token for local testing.'
+        'GOOGLE_CLIENT_ID is not configured in backend environment. Set it in .env.'
       );
     }
 
@@ -66,7 +57,7 @@ export class AuthService {
     return crypto.randomBytes(40).toString('hex');
   }
 
-  async authenticateWithGoogle(idToken: string) {
+  async authenticateWithGoogle(idToken: string, options?: { generateDesktopCode?: boolean; state?: string }) {
     const profile = await this.verifyGoogleIdToken(idToken);
 
     // Check if user exists by Google ID or Email
@@ -101,6 +92,11 @@ export class AuthService {
 
     await this.authRepo.saveRefreshToken(user.id, refreshTokenString, refreshExpiresAt);
 
+    let desktopAuthCode: string | undefined;
+    if (options?.generateDesktopCode) {
+      desktopAuthCode = this.createDesktopAuthCode(user.id, options.state);
+    }
+
     return {
       user: {
         id: user.id,
@@ -116,7 +112,69 @@ export class AuthService {
         tokenType: 'Bearer',
         expiresIn: config.jwt.accessExpiresIn,
       },
+      desktopAuthCode,
       isNewUser,
+    };
+  }
+
+  private desktopAuthCodes: Map<string, { code: string; userId: string; state?: string; expiresAt: Date }> = new Map();
+
+  createDesktopAuthCode(userId: string, state?: string): string {
+    const code = crypto.randomBytes(32).toString('hex');
+    const expiresAt = new Date(Date.now() + 60 * 1000); // 60 seconds
+    this.desktopAuthCodes.set(code, { code, userId, state, expiresAt });
+    return code;
+  }
+
+  async exchangeDesktopAuthCode(code: string, state?: string) {
+    const record = this.desktopAuthCodes.get(code);
+    if (!record) {
+      throw new Error('Invalid authorization code.');
+    }
+
+    // Single-use guarantee: burn code immediately
+    this.desktopAuthCodes.delete(code);
+
+    if (record.expiresAt < new Date()) {
+      throw new Error('Authorization code has expired.');
+    }
+
+    if (state && record.state && record.state !== state) {
+      throw new Error('State parameter mismatch in authorization exchange.');
+    }
+
+    const user = await this.authRepo.findUserById(record.userId);
+    if (!user) {
+      throw new Error('User account not found.');
+    }
+
+    const accessToken = this.generateAccessToken({
+      id: user.id,
+      email: user.email,
+      googleId: user.googleId,
+    });
+
+    const refreshTokenString = this.generateRefreshToken();
+    const refreshExpiresAt = new Date();
+    refreshExpiresAt.setDate(refreshExpiresAt.getDate() + config.jwt.refreshExpiresInDays);
+
+    await this.authRepo.saveRefreshToken(user.id, refreshTokenString, refreshExpiresAt);
+
+    return {
+      user: {
+        id: user.id,
+        email: user.email,
+        googleId: user.googleId,
+        name: user.name,
+        avatarUrl: user.avatarUrl,
+      },
+      subscription: user.subscription,
+      tokens: {
+        accessToken,
+        refreshToken: refreshTokenString,
+        tokenType: 'Bearer',
+        expiresIn: config.jwt.accessExpiresIn,
+      },
     };
   }
 

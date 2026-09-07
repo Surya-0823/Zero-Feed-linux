@@ -13,12 +13,13 @@ enum SubscriptionStatus {
   TRIAL
   CANCELLED
   PAST_DUE
+  EXPIRED
 }
 
 enum PlanTier {
   FREE
-  PRO
-  ENTERPRISE
+  YEARLY
+  LIFETIME
 }
 
 enum PaymentStatus {
@@ -31,6 +32,7 @@ enum PaymentStatus {
 enum PaymentProvider {
   STRIPE
   RAZORPAY
+  MOCK_PROVIDER
 }
 
 enum PartnerStatus {
@@ -115,6 +117,8 @@ model Payment {
   provider          PaymentProvider
   providerOrderId   String?
   providerPaymentId String?
+  receiptUrl        String?
+  metadata          Json?
   createdAt         DateTime        @default(now())
   updatedAt         DateTime        @updatedAt
 

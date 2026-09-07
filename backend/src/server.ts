@@ -2,6 +2,7 @@ import app from './app';
 import { config } from './config/env';
 import { prisma } from './db/prisma';
 
+// Trigger reload timestamp: 2026-09-07T21:17:35
 const server = app.listen(config.port, () => {
   console.log(`[ZeroFeed Backend] Server running on http://localhost:${config.port} in ${config.nodeEnv} mode`);
 });

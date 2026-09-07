@@ -7,6 +7,7 @@ import authRoutes from './routes/auth.routes';
 import userRoutes from './routes/user.routes';
 import subscriptionRoutes from './routes/subscription.routes';
 import policyRoutes from './routes/policy.routes';
+import checkoutRoutes from './routes/checkout.routes';
 
 const app: Express = express();
 
@@ -21,6 +22,7 @@ app.use('/api/v1/auth', authRoutes);
 app.use('/api/v1/users', userRoutes);
 app.use('/api/v1/subscription', subscriptionRoutes);
 app.use('/api/v1/policy', policyRoutes);
+app.use('/api/v1/checkout', checkoutRoutes);
 
 // Root informational endpoint
 app.get('/', (req: Request, res: Response) => {

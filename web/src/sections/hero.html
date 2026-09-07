@@ -1,0 +1,187 @@
+        <!-- ============================================================ -->
+        <!-- HERO SECTION                                                 -->
+        <!-- ============================================================ -->
+        <section class="hero" id="hero">
+
+            <!-- Mascot Logo Showcase -->
+            <div class="hero-logo-frame">
+                <div class="hero-mascot-card">
+                    <img src="src/assets/icon.svg" alt="ZeroFeed Mascot Doodle" class="hero-mascot-img" width="82" height="82" />
+                </div>
+                <span class="hero-mascot-tag">⚡ ZERO DISTRACTIONS</span>
+            </div>
+
+            <div class="hero-badge-container">
+                <span class="sticker-badge yellow">🎓 THE ULTIMATE STUDY COMPANION</span>
+                <span class="sticker-badge green">🔒 TAMPER-PROOF FOCUS</span>
+            </div>
+
+            <!-- Main Heading with Hand-Drawn Decorative Highlight -->
+            <h1 class="hero-title">
+                Stop Scrolling.<br />
+                <span class="highlight-wrap">
+                    <span class="highlight-text">Start Studying.</span>
+                    <span class="highlight-marker marker-pink shape-1"></span>
+                </span>
+            </h1>
+
+            <!-- Subtitle -->
+            <p class="hero-description">
+                The tamper-proof YouTube feed blocker and student focus app that blocks YouTube Shorts, strips algorithmic feeds, and removes dopamine traps so you can finish your study sessions <span class="highlight-wrap"><span class="highlight-text">in weeks,</span><span class="highlight-marker marker-yellow shape-2"></span></span> not months.
+            </p>
+
+            <!-- Feature Pills -->
+            <div class="hero-features">
+                <div class="feature-pill orange">
+                    <span>📺</span>
+                    <span>YouTube without the rabbit hole</span>
+                </div>
+                <div class="feature-pill green">
+                    <span>📱</span>
+                    <span>Social media without endless scrolling</span>
+                </div>
+                <div class="feature-pill yellow">
+                    <span>⚡</span>
+                    <span>Deep study sessions without interruptions</span>
+                </div>
+            </div>
+
+            <!-- Volunteer Demand Gate Counter -->
+            <div class="volunteer-counter-wrapper" id="volunteer-counter-wrapper">
+                <div class="volunteer-counter-pill" id="volunteer-counter">
+                    <span class="volunteer-pulse-indicator"></span>
+                    <span class="volunteer-count-text"><strong id="signup-count">0</strong> / 10 Volunteers to build ZeroFeed</span>
+                </div>
+                <div class="build-gate-banner" id="build-gate-banner" style="display: none;">
+                    🚀 <strong>Goal Unlocked!</strong> Over 10 founders have joined — ZeroFeed is officially in development!
+                </div>
+            </div>
+
+            <!-- CTA Group -->
+            <div class="hero-cta-group">
+                <a href="#pricing" class="btn-primary" id="hero-main-cta">
+                    ⚡ START YOUR FOCUS SESSION →
+                </a>
+                <div class="hero-guarantee">
+                    <span>🛡️ $24/year (Just $2/mo) · One plan. All your devices.</span>
+                </div>
+            </div>
+
+            <!-- HONEST EARLY ACCESS TRUST BADGE (Verifiable & Transparent) -->
+            <div class="social-proof-wrapper">
+                <div class="avatar-group">
+                    <div class="avatar-item" title="Student Founder">👨‍🎓</div>
+                    <div class="avatar-item" title="Student Beta">👩‍💻</div>
+                    <div class="avatar-item" title="Student Beta">⚡</div>
+                </div>
+                <div class="social-proof-content">
+                    <div class="stars-rating">
+                        <span style="color: var(--color-primary); font-weight: 800;">⚡ BUILT BY A STUDENT, FOR STUDENTS</span>
+                    </div>
+                    <p class="social-proof-quote">
+                        ZeroFeed is in private early access. <strong>Join the first 100 students</strong> taking back their focus.
+                    </p>
+                </div>
+            </div>
+
+            <!-- HIGH-IMPACT HERO PRODUCT SHOWCASE & SIMULATOR -->
+            <div class="focus-simulator-wrapper" id="simulator">
+                <!-- Browser Chrome Header -->
+                <div class="sim-header">
+                    <div class="sim-window-dots">
+                        <span class="dot-red"></span>
+                        <span class="dot-yellow"></span>
+                        <span class="dot-green"></span>
+                    </div>
+                    <div class="sim-url-bar">
+                        <span id="sim-url-icon">🔒</span>
+                        <span>youtube.com</span>
+                        <span class="sim-url-tag" id="sim-url-badge">FEED STRIPPED BY ZEROFEED ⚡</span>
+                    </div>
+                    <div class="sim-controls">
+                        <button class="sim-toggle-btn" id="btn-toggle-doom">Doomscroll Mode</button>
+                        <button class="sim-toggle-btn active" id="btn-toggle-zero">ZeroFeed Mode</button>
+                    </div>
+                </div>
+
+                <!-- Showcase Frame Container -->
+                <div class="sim-showcase-container" id="sim-showcase-view">
+                    <!-- Clean ZeroFeed State (Default) -->
+                    <div class="sim-preview-image-wrap" id="sim-clean-view">
+                        <img src="src/assets/clean_feed_preview.png" alt="ZeroFeed clean YouTube interface with feeds and Shorts removed" class="sim-preview-img" width="1280" height="800" loading="eager" />
+                        
+                        <!-- Floating Interactive Feature Callouts -->
+                        <div class="sim-callout callout-search">
+                            <span class="callout-icon">🔍</span>
+                            <div>
+                                <strong>Search &amp; Tutorials Active</strong>
+                                <span>Find any lecture or educational material</span>
+                            </div>
+                        </div>
+
+                        <div class="sim-callout callout-feed">
+                            <span class="callout-icon">🛡️</span>
+                            <div>
+                                <strong>Algorithmic Feed Neutralized</strong>
+                                <span>Zero autoplay loops &amp; recommendation traps</span>
+                            </div>
+                        </div>
+
+                        <div class="sim-callout callout-sidebar">
+                            <span class="callout-icon">📚</span>
+                            <div>
+                                <strong>Study Library Intact</strong>
+                                <span>Playlists, watch later &amp; history preserved</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Doomscroll State (with Real Algorithmic Feed Screenshot) -->
+                    <div class="sim-preview-image-wrap" id="sim-doom-view" style="display: none;">
+                        <img src="src/assets/doomscroll_preview.png" alt="Distracting default YouTube feed with Shorts carousels and recommendations" class="sim-preview-img" width="1024" height="581" loading="lazy" />
+                        
+                        <!-- Floating Warning Callouts -->
+                        <div class="sim-callout callout-doom-shorts">
+                            <span class="callout-icon">📱</span>
+                            <div>
+                                <strong style="color: #DC2626;">Infinite Shorts Carousel</strong>
+                                <span>Engineered dopamine spiral · 45+ mins lost</span>
+                            </div>
+                        </div>
+
+                        <div class="sim-callout callout-doom-clickbait">
+                            <span class="callout-icon">👀</span>
+                            <div>
+                                <strong style="color: #DC2626;">Recommendation Rabbit Hole</strong>
+                                <span>Trillion-dollar algorithms fighting for attention</span>
+                            </div>
+                        </div>
+
+                        <div class="sim-callout callout-doom-ads">
+                            <span class="callout-icon">📢</span>
+                            <div>
+                                <strong style="color: #DC2626;">Targeted Sponsored Traps</strong>
+                                <span>Disrupts focus before your lecture starts</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Showcase Bottom Telemetry Bar -->
+                <div class="sim-footer-metrics">
+                    <div class="sim-metric-item">
+                        <span class="metric-num" id="metric-traps-num">0%</span>
+                        <span class="metric-label" id="metric-traps-label">Feed Traps</span>
+                    </div>
+                    <div class="sim-metric-item">
+                        <span class="metric-num" id="metric-access-num">100%</span>
+                        <span class="metric-label">Lecture Access</span>
+                    </div>
+                    <div class="sim-metric-item">
+                        <span class="metric-num" id="metric-focus-num">+2.5 HRS</span>
+                        <span class="metric-label" id="metric-focus-label">Daily Focus Reclaimed</span>
+                    </div>
+                </div>
+            </div>
+
+        </section>

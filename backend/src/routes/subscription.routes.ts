@@ -5,5 +5,6 @@ import { requireAuth } from '../middlewares/auth.middleware';
 const router = Router();
 
 router.get('/', requireAuth, (req, res) => subscriptionController.getSubscription(req, res));
+router.get('/status', requireAuth, (req, res) => subscriptionController.getSubscription(req, res));
 
 export default router;
