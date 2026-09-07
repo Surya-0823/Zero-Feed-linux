@@ -33,6 +33,8 @@ module.exports = {
     {
       name: '@electron-forge/plugin-webpack',
       config: {
+        port: parseInt(process.env.ELECTRON_DEV_PORT || '3005', 10),
+        loggerPort: parseInt(process.env.ELECTRON_LOGGER_PORT || '9005', 10),
         mainConfig: path.resolve(__dirname, 'webpack.main.config.js'),
         renderer: {
           config: path.resolve(__dirname, 'webpack.renderer.config.js'),
