@@ -10,19 +10,19 @@
     "extension"
   ],
   "scripts": {
-    "dev": "concurrently -n \"API,WEB,DESKTOP\" -c \"blue,cyan,magenta\" \"npm --prefix backend run dev\" \"npm --prefix web run dev\" \"npm --prefix desktop start\"",
+    "dev": "concurrently -n \"API,WEB,DESKTOP\" -c \"blue,cyan,magenta\" \"npm --prefix backend run dev\" \"npm --prefix web run dev\" \"cd desktop && npm start\"",
     "dev:backend": "npm --prefix backend run dev",
     "dev:web": "npm --prefix web run dev",
-    "dev:desktop": "npm --prefix desktop start",
+    "dev:desktop": "cd desktop && npm start",
     "dev:extension": "npm --prefix extension run dev",
     "build:extension": "npm --prefix extension run build",
     "release:extension": "npm --prefix extension run release",
     "start": "npm run dev",
-    "start:desktop": "npm --prefix desktop start",
+    "start:desktop": "cd desktop && npm start",
     "start:web": "npm --prefix web run dev",
-    "test:desktop": "npm --prefix desktop test",
+    "test:desktop": "cd desktop && npm test",
     "test:backend": "npm --prefix backend test",
-    "test": "npm --prefix desktop test && npm --prefix backend test"
+    "test": "npm --prefix backend test && cd desktop && npm test"
   },
   "devDependencies": {
     "@electron-forge/cli": "7.11.2",
